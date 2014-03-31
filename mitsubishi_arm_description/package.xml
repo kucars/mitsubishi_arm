@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>mitsubishi_rv_6sdl_description</name>
+  <name>mitsubishi_description</name>
   <version>0.0.0</version>
-  <description>The mitsubishi_rv_6sdl_description package</description>
+  <description>The mitsubishi_description package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
