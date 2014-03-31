@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       name="mitsubishi_rv_6sdl_barret">
+  
+  <!-- LINKS   -->  
+  <include filename="$(find mitsubishi_rv_6sdl_description)/urdf/mitsubishi_rv_6sdl_arm.urdf.xacro" />
+
+  <joint name="arm_to_gripper" type="fixed">
+    <parent link="end_effector" />
+    <child link="barret_base_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.141" upper="0" effort="0" velocity="0" />
+  </joint>
+
+  <include filename="$(find barret_hand_description)/robots/bhand_model.URDF" />
+</robot>
+
