@@ -8,7 +8,7 @@ import time
 
 if __name__=="__main__":
   rospy.init_node('cyber_glove_teleop')
-  j =[0.7,0.5,0.0,0.2,-0.4,1.5]
+  j =[0.2,0.2,0.0,0.2,-0.3,1.0]
 
 
   COM =serial.Serial('/dev/ttyUSB0',9600)
@@ -20,6 +20,7 @@ if __name__=="__main__":
   COM.write("1\r\n") # tells slave to init
   while 1:
     A = COM.read(1)
+    #A = COM.read(1)
     buffer.append(A)
     if A == '\n':
       if "A" in buffer:
