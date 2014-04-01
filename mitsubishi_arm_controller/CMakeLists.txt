@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mitsubishi_arm_controller)
-
+catkin_python_setup() 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -123,10 +123,10 @@ add_library(mitsubishi_hardware_interface
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(PROGRAMS
+   scripts/joint_state_publisher
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS mitsubishi_driver mitsubishi_driver_node
