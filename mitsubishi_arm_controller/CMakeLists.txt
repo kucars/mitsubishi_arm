@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(mitsubishi_driver)
+project(mitsubishi_arm_controller)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -7,6 +7,7 @@ project(mitsubishi_driver)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -80,7 +81,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES mitsubishi_driver
+  LIBRARIES mitsubishi_hardware_interface
 #  CATKIN_DEPENDS roscpp rospy
 #  DEPENDS system_lib
 )
@@ -97,9 +98,9 @@ include_directories(
 )
 
 ## Declare a cpp library
-# add_library(mitsubishi_driver
-#   src/${PROJECT_NAME}/mitsubishi_driver.cpp
-# )
+add_library(mitsubishi_hardware_interface
+   src/MitsubishiHW.cpp
+)
 
 ## Declare a cpp executable
 # add_executable(mitsubishi_driver_node src/mitsubishi_driver_node.cpp)
