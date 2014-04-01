@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(mitsubishi_rv_6sdl_description)
+project(mitsubishi_arm_description)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)

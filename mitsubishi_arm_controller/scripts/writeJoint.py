@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import roslib; roslib.load_manifest('mitsubishi_arm')
 import rospy
 import serial
 import time
@@ -9,9 +8,9 @@ import time
 
 if __name__=="__main__":
   rospy.init_node('cyber_glove_teleop')
-  init_pos=[0.5,0.5,0.0,0.2,-0.4,1.5]
+  j =[0.7,0.5,0.0,0.2,-0.4,1.5]
 
-j = 
+
   COM =serial.Serial('/dev/ttyUSB0',9600)
   COM.parity = 'E'
   COM.stopbits = 2

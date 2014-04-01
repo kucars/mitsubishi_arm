@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>mitsubishi_description</name>
+  <name>mitsubishi_arm_description</name>
   <version>0.0.0</version>
   <description>The mitsubishi_description package</description>
 

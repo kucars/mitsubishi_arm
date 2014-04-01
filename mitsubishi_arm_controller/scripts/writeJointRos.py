@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import roslib; roslib.load_manifest('mitsubishi_arm')
+import roslib;
 import rospy
 import serial
 import time
@@ -11,22 +11,28 @@ import time
 import rospy
 from sensor_msgs.msg import JointState
 
-def callback(data):
-    rospy.loginfo(rospy.get_caller_id()+"I heard %s",data.data)
+global COM
 
+def callback(data):
+    rospy.loginfo(rospy.get_caller_id()+"I heard %s",data.position)
+    global COM
+    buffer=[]
+    j =[0.7,0.5,0.0,0.2,-0.4,1.5]
+    j[0]=data.position[0]
     while 1:
       A = COM.read(1)
+      print A
       buffer.append(A)
       if A == '\n':
         if "A" in buffer:
-          print "GOT an A: ", buffer
-          S = str(j[0]) + ',' + str(j[1]) + ',' + str(j[2]) + ',' + str(j[3]) + ',' + str(j[4]) + ',' + str(j[5]) + "\r\n"
+          #print "GOT an A: ", buffer
+          #print "data pos 0:", data.position
+          S = str(data.position[0]) + ',' + str(data.position[1]) + ',' + str(j[2]) + ',' + str(j[3]) + ',' + str(j[4]) + ',' + str(j[5]) + "\r\n"
           print "SENDING:",S
           COM.write(S)
-          break
+          return
         print buffer
         buffer = []
-      r.sleep()
     
 def listener():
 
@@ -36,8 +42,8 @@ def listener():
     # name for our 'listener' node so that multiple listeners can
     # run simultaenously.
     rospy.init_node('listener', anonymous=True)
-
-    rospy.Subscriber("chatter", String, callback)
+    global COM
+    rospy.Subscriber("joint_angles", JointState, callback)
     COM =serial.Serial('/dev/ttyUSB0',9600)
     COM.parity = 'E'
     COM.stopbits = 2
@@ -45,6 +51,7 @@ def listener():
     buffer = []
     #r=rospy.Rate(10) # 10 hz
     COM.write("1\r\n") # tells slave to init
+    r=rospy.Rate(10) # 10 hz
     while rospy.is_shutdown()==False:
       r.sleep()
       # spin() simply keeps python from exiting until this node is stopped
