@@ -29,8 +29,28 @@ class JointTrajectoryActionServer(object):
     self.COM.parity = 'E'
     self.COM.stopbits = 2
     self.COM.timeout= 2.0
-    #self.COM.write("2\r\n") # tells slave to init
     print self.COM
+
+    self.COM.write("1\r\n") # tells slave to init
+    buffer=""
+    while 1:
+      A = self.COM.read(1);
+      buffer=buffer + str(A);
+      if 'A\r\n' in buffer:
+        joint_values_buffer = ""
+        # Get joint state
+        time.sleep(1)
+        while '\n' not in joint_values_buffer:
+          A=self.COM.read(1)
+          joint_values_buffer=joint_values_buffer+str(A)
+          #print 'inloop',A
+        #print 'just before:',joint_values_buffer
+        self.write_joint_state_msg(joint_values_buffer)
+        break
+  print 'init done!'
+
+
+
   def execute_cb(self, goal):
     global is_moving
     is_moving=True
@@ -50,6 +70,7 @@ class JointTrajectoryActionServer(object):
         self._as.set_preempted()
         success = False
         break
+      rospy.loginfo(rospy.get_caller_id()+"Trajectory point %i: %s", i,goal.trajectory.points[i].positions)
       self.sendJointState(goal.trajectory.points[i])
       rospy.loginfo(rospy.get_caller_id()+" Done")
       #self._feedback.sequence.append(self._feedback.sequence[i] + self._feedback.sequence[i-1])
@@ -65,11 +86,11 @@ class JointTrajectoryActionServer(object):
     is_moving=False
 
   def sendJointState(self,data):
-    rospy.loginfo(rospy.get_caller_id()+"I heard %s",data.positions)
+    #rospy.loginfo(rospy.get_caller_id()+"I heard %s",data.positions)
 
     buffer=""
     i=0
-    teste=self.COM.write("1\r\n")
+    self.COM.write("2\r\n")
 
     while 1:
       A = self.COM.read(1);
