@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - j1
+      - j2
+      - j3
+      - j4
+      - j5
+      - j6
+  - name: fake_barret_hand_controller
+    joints:
+      - finger_1_prox_joint
+      - finger_1_med_joint
+      - finger_1_dist_joint
+      - finger_2_prox_joint
+      - finger_2_med_joint
+      - finger_2_dist_joint
+      - finger_3_med_joint
+      - finger_3_dist_joint

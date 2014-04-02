@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
-        - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.74256
     Tree Height: 131
   - Class: rviz/Help
@@ -51,6 +50,11 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          barret_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           base_link:
             Alpha: 1
             Show Axes: false
@@ -66,15 +70,55 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          end_effector:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          finger_1_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_1_med_liink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_1_prox_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_med_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_prox_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_3_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_3_med_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          hand:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           shoulder:
             Alpha: 1
             Show Axes: false
@@ -95,7 +139,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-        Loop Animation: false
+        Loop Animation: true
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
@@ -138,6 +182,11 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
+          barret_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           base_link:
             Alpha: 1
             Show Axes: false
@@ -153,15 +202,55 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          end_effector:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          finger_1_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_1_med_liink:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_1_prox_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_med_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_2_prox_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_3_dist_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          finger_3_med_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          hand:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           shoulder:
             Alpha: 1
             Show Axes: false
@@ -208,10 +297,10 @@ Visualization Manager:
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.509797
+      Pitch: 0.309797
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 5.65995
+      Yaw: 2.73677
     Saved: ~
 Window Geometry:
   Displays:
