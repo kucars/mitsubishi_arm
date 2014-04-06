@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mitsubishi_arm_description
+    relative_path: robots/mitsubishi_rv_6sdl_barret.urdf.xacro
+  SRDF:
+    relative_path: config/mitsubishi_and_barret.srdf
+  CONFIG:
+    generated_timestamp: 1396380988

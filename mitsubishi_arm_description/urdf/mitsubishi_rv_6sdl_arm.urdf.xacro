@@ -21,7 +21,7 @@
 
   <joint name="j1" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="0.5"/>
+    <limit effort="1000.0" lower="-3.10668606855" upper="3.10668606855" velocity="0.5"/>
     <parent link="base_link"/>
     <child link="shoulder_block"/>
     <origin xyz="0 0 0.239"/>
@@ -48,10 +48,10 @@
 
   <joint name="j2" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-1.6" upper="2.35" velocity="0.5"/>
+    <limit effort="1000.0" lower="-2.75762021815" upper="2.75762021815" velocity="0.5"/>
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
-    <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 0"/>
+    <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
   </joint>
 
 
@@ -105,7 +105,7 @@
     <limit effort="1000.0" lower="-2.75762021815" upper="2.75762021815" velocity="0.5"/>
     <parent link="upper_arm"/>
     <child link="elbow"/>
-    <origin xyz="0 0.295 0"/>
+    <origin xyz="0 0.295 0" rpy="3.14159265359 0 1.57"/>
   </joint>
 
   <link name="elbow">
@@ -182,7 +182,7 @@
     <limit effort="1000.0" lower="-0.92502450355" upper="0.92502450355" velocity="0.5"/>
     <parent link="fore_arm"/>
     <child link="wrist"/>
-    <origin xyz="0 0 0.240"  rpy="0 -1.5707963267 0"/>
+    <origin xyz="0 0 0.240"  rpy="3.14159265359 -1.5707963267 0"/>
   </joint>
 
   <link name="wrist">

@@ -22,7 +22,7 @@ def JointTrajectoryActionClient():
 
     # Creates a goal to send to the action server.
     first_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    first_point.positions=[0.0,0.0,0.0,0.0,-0.4,1.0]
+    first_point.positions=[0.1,0.7,0.0,0.2,-0.4,1.5]
 
     second_point=trajectory_msgs.msg.JointTrajectoryPoint()
     second_point.positions=[0.1,0.65,0.0,0.2,-0.4,1.5]
@@ -37,7 +37,7 @@ def JointTrajectoryActionClient():
     fifth_point.positions=[0.1,0.5,0.0,0.2,-0.4,1.5]
 
     sixth_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    sixth_point.positions=[0.1,0.45,0.0,0.2,-0.4,1.5]
+    sixth_point.positions=[0.0,0.0,0.0,0.0,0.0,0.0]
 
 
     goal = control_msgs.msg.JointTrajectoryGoal()
