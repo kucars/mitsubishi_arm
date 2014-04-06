@@ -21,7 +21,7 @@
 
   <joint name="j1" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-3.10668606855" upper="3.10668606855" velocity="0.5"/>
+    <limit effort="1000.0" lower="-2.96" upper="2.96" velocity="0.5"/>
     <parent link="base_link"/>
     <child link="shoulder_block"/>
     <origin xyz="0 0 0.239"/>
@@ -48,7 +48,7 @@
 
   <joint name="j2" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-2.75762021815" upper="2.75762021815" velocity="0.5"/>
+    <limit effort="1000.0" lower="-1.6" upper="2.35" velocity="0.5"/>
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
     <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 0"/>
