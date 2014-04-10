@@ -20,42 +20,34 @@ def JointTrajectoryActionClient():
     # listening for goals.
     client.wait_for_server()
 
-    # Creates a goal to send to the action server.
-    first_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    first_point.positions=[0.1,0.7,0.0,0.2,-0.4,1.5]
-
-    second_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    second_point.positions=[0.1,0.65,0.0,0.2,-0.4,1.5]
-
-    third_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    third_point.positions=[0.1,0.6,0.0,0.2,-0.4,1.5]
-
-    forth_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    forth_point.positions=[0.1,0.55,0.0,0.2,-0.4,1.5]
-
-    fifth_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    fifth_point.positions=[0.1,0.5,0.0,0.2,-0.4,1.5]
-
-    sixth_point=trajectory_msgs.msg.JointTrajectoryPoint()
-    sixth_point.positions=[0.0,0.0,0.0,0.0,0.0,0.0]
-
-
+    joint_max_limit=1.0
+    i=0
+    resolution=100
     goal = control_msgs.msg.JointTrajectoryGoal()
-    goal.trajectory.points.append(first_point)
-    goal.trajectory.points.append(second_point)
-    goal.trajectory.points.append(third_point)
-    goal.trajectory.points.append(forth_point)
-    goal.trajectory.points.append(fifth_point)
-    goal.trajectory.points.append(sixth_point)
+    while rospy.is_shutdown()==False:
+      if i==resolution:
+        i=0
+        client.send_goal(goal)
+        # Waits for the server to finish performing the action.
+        client.wait_for_result()
+
+        # Prints out the result of executing the action
+        print client.get_result()  # A FibonacciResult
+        #print goal
+        goal.trajectory.points=[]
+      # Creates a goal to send to the action server.
+      trajectory_point=trajectory_msgs.msg.JointTrajectoryPoint()
+      trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,0.2,-0.4,1.5]
+      goal.trajectory.points.append(trajectory_point)
+      i=i+1
+
+    
+
 
     # Sends the goal to the action server.
-    client.send_goal(goal)
 
-    # Waits for the server to finish performing the action.
-    client.wait_for_result()
 
-    # Prints out the result of executing the action
-    return client.get_result()  # A FibonacciResult
+
 
 
 if __name__ == '__main__':

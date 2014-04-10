@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+  <property name="PI" value="3.1415926535897931" />
   <link name="base_link" >
     <visual>
       <geometry>
@@ -21,7 +21,7 @@
 
   <joint name="j1" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-3.10668606855" upper="3.10668606855" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-169*PI/180}" upper="${169*PI/180}" velocity="0.5"/>
     <parent link="base_link"/>
     <child link="shoulder_block"/>
     <origin xyz="0 0 0.239"/>
@@ -48,7 +48,7 @@
 
   <joint name="j2" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-2.75762021815" upper="2.75762021815" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-92*PI/180}" upper="${131*PI/180}" velocity="0.5"/>
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
     <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
@@ -76,7 +76,6 @@
 
   <joint name="fixed_joint_1" type="fixed">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="0.0" upper="2.18166156499" velocity="0.5"/>
     <parent link="shoulder"/>
     <child link="upper_arm"/>
     <origin xyz="0 0.085 0"/>
@@ -102,7 +101,7 @@
 
   <joint name="j3" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-2.75762021815" upper="2.75762021815" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-128*PI/180}" upper="${165*PI/180}" velocity="0.5"/>
     <parent link="upper_arm"/>
     <child link="elbow"/>
     <origin xyz="0 0.295 0" rpy="3.14159265359 0 1.57"/>
@@ -153,7 +152,7 @@
 
   <joint name="j4" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="0.0" upper="2.18166156499" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-159*PI/180}" upper="${159*PI/180}" velocity="0.5"/>
     <parent link="elbow_block"/>
     <child link="fore_arm"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
@@ -179,7 +178,7 @@
 
   <joint name="j5" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-0.92502450355" upper="0.92502450355" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-110*PI/180}" upper="${110*PI/180}" velocity="0.5"/>
     <parent link="fore_arm"/>
     <child link="wrist"/>
     <origin xyz="0 0 0.240"  rpy="3.14159265359 -1.5707963267 0"/>
@@ -205,7 +204,7 @@
 
   <joint name="j6" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="0.0" upper="2.18166156499" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-359*PI/180}" upper="${359*PI/180}" velocity="0.5"/>
     <parent link="wrist"/>
     <child link="end_effector"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
