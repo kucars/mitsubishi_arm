@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>mitsubishi_arm_controller</name>
+  <name>mitsubishi_arm_hardware_interface</name>
   <version>0.0.0</version>
   <description>The mitsubishi_driver package</description>
 
@@ -19,6 +19,7 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>hardware_interface</build_depend>
+  <build_depend>controller_manager</build_depend>
   <build_depend>sensor_msgs</build_depend>
   <build_depend>actionlib</build_depend>
   <build_depend>actionlib_msgs</build_depend>
@@ -30,6 +31,7 @@
   <run_depend>actionlib</run_depend>
   <run_depend>actionlib_msgs</run_depend>
   <run_depend>control_msgs</run_depend>
+  <run_depend>controller_manager</run_depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- You can specify that this package is a metapackage here: -->

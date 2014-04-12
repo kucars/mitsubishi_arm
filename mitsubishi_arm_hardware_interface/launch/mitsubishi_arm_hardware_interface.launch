@@ -1,0 +1,3 @@
+<launch>
+  <node name="mitsubishi_arm_hardware_interface" pkg="mitsubishi_arm_hardware_interface" type="mitsubishi_arm_hardware_interface" respawn="true" output="screen" ns="/mitsubishi_arm"/>
+</launch>
