@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES
+  LIBRARIES mitsubishi_arm_hardware_interface
 #  CATKIN_DEPENDS roscpp rospy
 #  DEPENDS system_lib
 )
@@ -31,14 +31,13 @@ include_directories(include
 )
 
 
-add_executable(mitsubishi_arm_hardware_interface src/MitsubishiArmInterface.cpp)
+add_library(mitsubishi_arm_hardware_interface src/MitsubishiArmInterface.cpp)
 
+add_executable(mitsubishi_arm_hardware_interface_node src/Robot.cpp)
 ## Specify libraries to link a library or executable target against
-target_link_libraries(mitsubishi_arm_hardware_interface
+target_link_libraries(mitsubishi_arm_hardware_interface_node mitsubishi_arm_hardware_interface
    ${catkin_LIBRARIES}
 )
-
-add_executable(com src/com.c)
 
 #############
 ## Install ##

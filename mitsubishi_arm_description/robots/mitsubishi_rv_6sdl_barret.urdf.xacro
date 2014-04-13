@@ -6,11 +6,11 @@
 
   <joint name="arm_to_gripper" type="fixed">
     <parent link="end_effector" />
-    <child link="barret_base_link" />
+    <child link="barrett_base_link" />
     <axis xyz="0 0 1" />
     <limit lower="-3.141" upper="0" effort="0" velocity="0" />
   </joint>
 
-  <xacro:include filename="$(find barret_hand_description)/robots/bhand_model.URDF" />
+  <xacro:include filename="$(find barrett_hand_description)/robots/bhand_model.URDF" />
 </robot>
 
