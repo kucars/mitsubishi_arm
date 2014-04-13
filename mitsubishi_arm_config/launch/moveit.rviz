@@ -50,11 +50,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          barret_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           base_link:
             Alpha: 1
             Show Axes: false
@@ -74,46 +69,6 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          finger_1_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_1_med_liink:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_1_prox_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_med_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_prox_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_3_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_3_med_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
@@ -182,11 +137,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          barret_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           base_link:
             Alpha: 1
             Show Axes: false
@@ -206,46 +156,6 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          finger_1_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_1_med_liink:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_1_prox_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_med_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_2_prox_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_3_dist_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          finger_3_med_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
@@ -297,10 +207,10 @@ Visualization Manager:
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.309797
+      Pitch: 0.0497971
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 2.73677
+      Yaw: 2.16177
     Saved: ~
 Window Geometry:
   Displays:
@@ -316,5 +226,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1301
-  X: 57
-  Y: -4
+  X: 58
+  Y: 24

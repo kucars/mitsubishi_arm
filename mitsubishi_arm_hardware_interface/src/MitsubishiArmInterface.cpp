@@ -1,6 +1,6 @@
 #include <mitsubishi_arm_hardware_interface/MitsubishiArmInterface.h>
 #include <sstream>
-MitsubishiArmInterface::MitsubishiArmInterface() : n_priv("~")
+MitsubishiArmInterface::MitsubishiArmInterface()
 {
     //joint_state_pub=n_priv.advertise<sensor_msgs::JointState>( "joint_states", 1);
 
@@ -81,7 +81,7 @@ MitsubishiArmInterface::MitsubishiArmInterface() : n_priv("~")
     tty.c_cflag = BAUD | CRTSCTS | CS8 | CLOCAL | CREAD | PARENB;
 
     tty.c_cc[VMIN]=0;
-    tty.c_cc[VTIME]=1;
+    tty.c_cc[VTIME]=20;
 
     // Flush Port, then applies attributes
     tcflush( USB, TCIFLUSH );
@@ -92,54 +92,74 @@ MitsubishiArmInterface::MitsubishiArmInterface() : n_priv("~")
     }
     else
         std::cout << "connected successfuly" <<std::endl;
-    usleep(100000);
+    usleep(10000);
+
+
+    // WRITE READ to robot
+    int n_written = 0;
+    std::string response;
+    char buf [256];
+
+    unsigned char cmd_msg[] = "1\r\n";
+    do
+    {
+        n_written += write( USB, &cmd_msg[n_written], 1 );
+    }
+    while (cmd_msg[n_written-1] != '\n' && n_written > 0);
+
+    memset (&buf, '\0', sizeof buf);
+
+    // See if robot is ready
+    do
+    {
+        n_written += read( USB, &buf, 1);
+        response.append( buf );
+    }
+    while( buf[0] != '\n' && n_written > 0);
+
+    if (response.find("A\r\n") == std::string::npos)
+    {
+        std::cout << "INIT FAILED:" << response << std::endl;
+        exit(-1);
+    }
+
+
+    readHW();
+
+    cmd=pos;
+
+    // convert to radians and add to state
+    for(int i=0; i< pos.size(); ++i)
+    {
+        std::cout << cmd[i] << std::endl;
+    }
+
+
+    std::cout << "Init done!" << '\n';
+
 
 }
 
 MitsubishiArmInterface::~MitsubishiArmInterface()
 {
     close(USB);
-    std::cout << "close interface" << std::endl;
 }
 
 void MitsubishiArmInterface::readHW()
 {
-    // WRITE cmd to the robot
-    unsigned char cmd[] = "1\r\n";
-    int n_written = 0;
-
-    do
-    {
-        n_written += write( USB, &cmd[n_written], 1 );
-    }
-    while (cmd[n_written-1] != '\n' && n_written > 0);
-
-    char buf [256];
-    memset (&buf, '\0', sizeof buf);
-    //READ
-
-    int n = 0;
     std::string response;
+    char buf [256];
 
-    do
-    {
-        n += read( USB, &buf, 1);
-        response.append( buf );
-    }
-    while( buf[0] != '\n' && n > 0);
-
-
-    response.clear();
-
+    int n_written = 0;
     memset (&buf, '\0', sizeof buf);
 
     do
     {
-        n += read( USB, &buf, 1);
+        n_written += read( USB, &buf, 1);
         response.append( buf );
-        //std::cout << "buff:"<<buf << std::endl;
+
     }
-    while( buf[0] != '\n' && n > 0);
+    while( buf[0] != '\n');
 
     std::stringstream convertor(response);
 
@@ -160,11 +180,13 @@ void MitsubishiArmInterface::readHW()
               >> pos[6]
               >> dummy_char;
 
+
     // convert to radians and add to state
     for(int i=0; i< pos.size(); ++i)
     {
-        pos[i]=DEG_TO_RAD*pos[i];
+        pos[i]=pos[i]*(DEG_TO_RAD);
     }
+
 
     eff[0]=0.0;
     eff[1]=0.0;
@@ -179,27 +201,24 @@ void MitsubishiArmInterface::readHW()
     vel[3]=0.0;
     vel[4]=0.0;
     vel[5]=0.0;
-
-    std::cout << "pos:"<< jnt_state_interface.getHandle("j6").getPosition() << std::endl;
 }
 
 
 void MitsubishiArmInterface::writeHW()
 {
-    // WRITE cmd to the robot
-    unsigned char cmd[] = "2\r\n";
+    // WRITE MOVE to robot
+    unsigned char cmd_msg[] = "2\r\n";
     int n_written = 0;
 
     do
     {
-        n_written += write( USB, &cmd[n_written], 1 );
+        n_written += write( USB, &cmd_msg[n_written], 1 );
     }
-    while (cmd[n_written-1] != '\n' && n_written > 0);
+    while (cmd_msg[n_written-1] != '\n');
 
     char buf [256];
     memset (&buf, '\0', sizeof buf);
     //READ A
-
     int n = 0;
     std::string response;
 
@@ -208,112 +227,27 @@ void MitsubishiArmInterface::writeHW()
         n += read( USB, &buf, 1);
         response.append( buf );
     }
-    while( buf[0] != '\n' && n > 0);
+    while( buf[0] != '\n');
+
+    if (response.find("M\r\n") == std::string::npos)
+    {
+        std::cout << "didn-t find M!" << '\n';
+        exit(-1);
+    }
 
 
     response.clear();
 
-    memset (&buf, '\0', sizeof buf);
+    std::stringstream write_msg;
+    //std::cout << cmd[1] << std::endl;
+    write_msg << double(cmd[0]) << "," <<cmd[1] << "," << cmd[2] << "," << cmd[3] << "," << cmd[4] << "," << cmd[5] << "\r\n";
 
-    // Write
-    do
-    {
-        n += read( USB, &buf, 1);
-        response.append( buf );
-        //std::cout << "buff:"<<buf << std::endl;
-    }
-    while( buf[0] != '\n' && n > 0);
+    std::string write_str=write_msg.str();
 
-    std::stringstream convertor(response);
+    // Write command
+    write( USB, write_str.c_str(), write_str.size());
 
-    char dummy_char;
-    convertor >> dummy_char
-              >> pos[0]
-              >> dummy_char
-              >> pos[1]
-              >> dummy_char
-              >> pos[2]
-              >> dummy_char
-              >> pos[3]
-              >> dummy_char
-              >> pos[4]
-              >> dummy_char
-              >> pos[5]
-              >> dummy_char
-              >> pos[6]
-              >> dummy_char;
-
-    // convert to radians and add to state
-    for(int i=0; i< pos.size(); ++i)
-    {
-        pos[i]=DEG_TO_RAD*pos[i];
-    }
-
-    if(convertor.fail() == true)
-    {
-        // if the data string is not well-formatted do what ever you want here
-    }
-
-
-    if (n < 0)
-    {
-        std::cout << "Error reading: " << strerror(errno) << std::endl;
-    }
-    else if (n == 0)
-    {
-        std::cout << "Read nothing!" << std::endl;
-    }
-    else
-    {
-//        std::cout << "Response: " << response;
-    }
-
-
-
+    readHW();
 }
 
-/*
-int main(int argc, char** argv)
-{
-    ros::init(argc, argv, std::string("mitsubishi_arm_interface"));
-
-    MitsubishiArmInterface robot;
-    controller_manager::ControllerManager cm(&robot);
-
-    cm.loadController("joint_state_controller");
-    std::vector<std::string> start_vec;
-    start_vec.push_back("joint_state_controller");
-    std::vector<std::string> stop_vec;
-
-//    ros::Duration period;
-//    ros::Time now=ros::Time::now();
-
-//    period=now-now;
-
-//    cm.update(now, period);
-
-
-    ros::Time previous;
-    ros::Rate r(10);
-    while (ros::ok())
-    {
-        ros::Duration period;
-
-        ros::Time now=ros::Time::now();
-        period=now-previous;
-        previous=now;
-        robot.readHW();
-        cm.update(now, period,true);
-        cm.switchController(start_vec,stop_vec,2);
-
-        //ROS_INFO_STREAM("period:"<< period);
-        robot.writeHW();
-
-        ros::spinOnce();
-
-        r.sleep();
-    }
-
-    return 1;
-}*/
 

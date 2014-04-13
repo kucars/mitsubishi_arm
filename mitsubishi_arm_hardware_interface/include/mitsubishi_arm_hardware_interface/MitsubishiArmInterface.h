@@ -22,7 +22,6 @@ public:
   ~MitsubishiArmInterface();
   void readHW();
   void writeHW();
-  ros::NodeHandle n_priv;
   int USB;
 
 private:

@@ -22,7 +22,7 @@ def JointTrajectoryActionClient():
 
     joint_max_limit=1.0
     i=0
-    resolution=100
+    resolution=2
     goal = control_msgs.msg.JointTrajectoryGoal()
     while rospy.is_shutdown()==False:
       if i==resolution:
@@ -37,12 +37,13 @@ def JointTrajectoryActionClient():
         goal.trajectory.points=[]
       # Creates a goal to send to the action server.
       trajectory_point=trajectory_msgs.msg.JointTrajectoryPoint()
-      trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,0.2,-0.4,1.5]
+      trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,i*(joint_max_limit/resolution),-0.4,1.5]
       goal.trajectory.points.append(trajectory_point)
+      
       i=i+1
 
     
-
+    trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,i*(joint_max_limit/resolution),-0.4,1.5]
 
     # Sends the goal to the action server.
 

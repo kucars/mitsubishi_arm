@@ -1,0 +1,43 @@
+mitsubishi_arm:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50 
+  
+  # Position Controllers ---------------------------------------
+  joint1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j1
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j2
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j3
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j4
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint5_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j5
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  joint6_position_controller:
+    type: position_controllers/JointPositionController
+    joint: j6
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+
+  # Trajectory Controllers ---------------------------------------
+  mitsubishi_arm_trajectory_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - j1
+      - j2
+      - j3
+      - j4
+      - j5
+      - j6

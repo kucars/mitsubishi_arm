@@ -96,7 +96,7 @@ class JointTrajectoryActionServer(object):
       A = self.COM.read(1);
       buffer=buffer + str(A);
 
-      if 'A\r\n' in buffer:
+      if 'M\r\n' in buffer:
         #print "GOT an A: ", A
         #print "data pos 0:", data.position
         S = str(data.positions[0]) + ',' + str(data.positions[1]) + ',' + str(data.positions[2]) + ',' + str(data.positions[3]) + ',' + str(data.positions[4]) + ',' + str(data.positions[5]) + "\r\n"
