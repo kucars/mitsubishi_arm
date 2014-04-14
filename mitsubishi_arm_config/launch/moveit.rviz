@@ -1,12 +1,13 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 84
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /MotionPlanning1
+        - /MotionPlanning1/Planning Request1
       Splitter Ratio: 0.74256
-    Tree Height: 131
+    Tree Height: 215
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -94,7 +95,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-        Loop Animation: true
+        Loop Animation: false
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
@@ -207,10 +208,10 @@ Visualization Manager:
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.0497971
+      Pitch: 0.164797
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 2.16177
+      Yaw: 5.56496
     Saved: ~
 Window Geometry:
   Displays:
