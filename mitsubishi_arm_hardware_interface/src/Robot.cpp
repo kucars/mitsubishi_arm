@@ -18,9 +18,10 @@ int main(int argc, char** argv)
     while (ros::ok())
     {
         ros::Duration period;
-        //robot.readHW();
+        robot.readHW();
         ros::Time now=ros::Time::now();
         period=now-previous;
+        //std::cout << "period:"<<period<<std::endl;
         cm.update(now, period);
         robot.writeHW();
         rate.sleep();

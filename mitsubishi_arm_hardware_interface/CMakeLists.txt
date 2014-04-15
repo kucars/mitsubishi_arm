@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   hardware_interface
   controller_manager
+  actionlib
 )
 
 catkin_package(
@@ -41,6 +42,10 @@ target_link_libraries(mitsubishi_arm_hardware_interface_node mitsubishi_arm_hard
    ${catkin_LIBRARIES}
 )
 
+add_executable(joint_trajectory_action_client src/jointTrajectoryActionClient.cpp)
+target_link_libraries(joint_trajectory_action_client mitsubishi_arm_hardware_interface
+   ${catkin_LIBRARIES}
+)
 #add_executable(mitsubishi_arm_hardware_interface_dummy_node src/Robot.cpp)
 ## Specify libraries to link a library or executable target against
 #target_link_libraries(mitsubishi_arm_hardware_interface_dummy_node mitsubishi_arm_hardware_interface_dummy

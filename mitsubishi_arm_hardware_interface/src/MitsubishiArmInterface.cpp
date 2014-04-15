@@ -8,6 +8,7 @@ MitsubishiArmInterface::MitsubishiArmInterface()
     vel.resize(joint_number);
     eff.resize(joint_number);
     cmd.resize(joint_number);
+    cmd_previous.resize(joint_number);
 
 
     // connect and register the joint state interface
@@ -73,10 +74,10 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
 
     // Set Baud Rate
-    cfsetospeed (&tty, B9600);
-    cfsetispeed (&tty, B9600);
+    cfsetospeed (&tty, B19200);
+    cfsetispeed (&tty, B19200);
 
-    long BAUD    =B9600;
+    long BAUD    =B19200;
 
     tty.c_cflag = BAUD | CRTSCTS | CS8 | CLOCAL | CREAD | PARENB;
 
@@ -95,39 +96,10 @@ MitsubishiArmInterface::MitsubishiArmInterface()
     usleep(10000);
 
 
-    // WRITE READ to robot
-    int n_written = 0;
-    std::string response;
-    char buf [256];
-
-    unsigned char cmd_msg[] = "1\r\n";
-    do
-    {
-        n_written += write( USB, &cmd_msg[n_written], 1 );
-    }
-    while (cmd_msg[n_written-1] != '\n' && n_written > 0);
-
-    memset (&buf, '\0', sizeof buf);
-
-    // See if robot is ready
-    do
-    {
-        n_written += read( USB, &buf, 1);
-        response.append( buf );
-    }
-    while( buf[0] != '\n' && n_written > 0);
-
-    if (response.find("A\r\n") == std::string::npos)
-    {
-        std::cout << "INIT FAILED:" << response << std::endl;
-        exit(-1);
-    }
-
-
     readHW();
 
     cmd=pos;
-
+    cmd_previous=cmd;
     // convert to radians and add to state
     for(int i=0; i< pos.size(); ++i)
     {
@@ -147,10 +119,44 @@ MitsubishiArmInterface::~MitsubishiArmInterface()
 
 void MitsubishiArmInterface::readHW()
 {
-    std::string response;
-    char buf [256];
+    //std::cout << "going to read" << std::endl;
+    //boost::mutex::scoped_lock lock(io_mutex);
+    //std::cout << "reading" << std::endl;
 
+    // WRITE READ to robot
+    unsigned char cmd_msg[] = "1\r\n";
     int n_written = 0;
+
+    do
+    {
+        n_written += write( USB, &cmd_msg[n_written], 1 );
+    }
+    while (cmd_msg[n_written-1] != '\n');
+
+    // READ RESPONSE (R)
+    char buf [256];
+    memset (&buf, '\0', sizeof buf);
+    int n = 0;
+    std::string response;
+
+    do
+    {
+        n += read( USB, &buf, 1);
+        response.append( buf );
+    }
+    while( buf[0] != '\n');
+
+    if (response.find("R\r\n") == std::string::npos)
+    {
+        std::cout << "didn-t find R!" << '\n';
+        exit(-1);
+    }
+
+    response.clear();
+    // END READ
+
+    // READ JOINTS STATE
+    n_written = 0;
     memset (&buf, '\0', sizeof buf);
 
     do
@@ -162,6 +168,25 @@ void MitsubishiArmInterface::readHW()
     while( buf[0] != '\n');
 
     std::stringstream convertor(response);
+
+    // READ RESPONSE (E)
+    memset (&buf, '\0', sizeof buf);
+    n = 0;
+
+    do
+    {
+        n += read( USB, &buf, 1);
+        response.append( buf );
+    }
+    while( buf[0] != '\n');
+
+    if (response.find("E\r\n") == std::string::npos)
+    {
+        std::cout << "didn-t find E!" << '\n';
+        exit(-1);
+    }
+    // END READ
+
 
     char dummy_char;
     convertor >> dummy_char
@@ -206,6 +231,16 @@ void MitsubishiArmInterface::readHW()
 
 void MitsubishiArmInterface::writeHW()
 {
+    if(isEqual(cmd_previous[0],cmd[0],0.00001))
+    {
+        //std::cout << "no new commands to write"<< std::endl;
+        cmd_previous=cmd;
+        return;
+    }
+    static int new_command_count=0;
+    new_command_count++;
+    std::cout << "new command:"<< new_command_count << std::endl;
+    //boost::mutex::scoped_lock lock(io_mutex);
     // WRITE MOVE to robot
     unsigned char cmd_msg[] = "2\r\n";
     int n_written = 0;
@@ -216,9 +251,9 @@ void MitsubishiArmInterface::writeHW()
     }
     while (cmd_msg[n_written-1] != '\n');
 
+    // READ RESPONSE (M)
     char buf [256];
     memset (&buf, '\0', sizeof buf);
-    //READ A
     int n = 0;
     std::string response;
 
@@ -235,19 +270,39 @@ void MitsubishiArmInterface::writeHW()
         exit(-1);
     }
 
-
     response.clear();
+    // END READ
 
     std::stringstream write_msg;
     //std::cout << cmd[1] << std::endl;
     write_msg << double(cmd[0]) << "," <<cmd[1] << "," << cmd[2] << "," << cmd[3] << "," << cmd[4] << "," << cmd[5] << "\r\n";
 
     std::string write_str=write_msg.str();
+    //std::cout << "writing command:" << write_str<< std::endl;
 
     // Write command
     write( USB, write_str.c_str(), write_str.size());
+    cmd_previous=cmd;
+    // READ RESPONSE (E)
+    memset (&buf, '\0', sizeof buf);
+    n = 0;
+    //std::cout << "getting respoinse"<< std::endl;
 
-    readHW();
+    do
+    {
+        n += read( USB, &buf, 1);
+        response.append( buf );
+    }
+    while( buf[0] != '\n');
+
+    if (response.find("E\r\n") == std::string::npos)
+    {
+        std::cout << "didn-t find E!" << '\n';
+        exit(-1);
+    }
+   // std::cout << "got respoinse"<< std::endl;
+
+    // END READ
 }
 
 
