@@ -22,7 +22,7 @@
 
   <joint name="j1" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-170+offset_from_limit)*PI/180}" upper="${(170-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${(-170+offset_from_limit)*PI/180}" upper="${(170-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="base_link"/>
     <child link="shoulder_block"/>
     <origin xyz="0 0 0.239"/>
@@ -49,7 +49,7 @@
 
   <joint name="j2" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${-92*PI/180}" upper="${(135-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${-92*PI/180}" upper="${(135-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
     <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
@@ -102,7 +102,7 @@
 
   <joint name="j3" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-129+offset_from_limit)*PI/180}" upper="${(166-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${(-129+offset_from_limit)*PI/180}" upper="${(166-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="upper_arm"/>
     <child link="elbow"/>
     <origin xyz="0 0.295 0" rpy="0 0 1.57"/>
@@ -153,7 +153,7 @@
 
   <joint name="j4" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-160+offset_from_limit)*PI/180}" upper="${(160-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${(-160+offset_from_limit)*PI/180}" upper="${(160-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="elbow_block"/>
     <child link="fore_arm"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
@@ -179,7 +179,7 @@
 
   <joint name="j5" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-110+offset_from_limit)*PI/180}" upper="${(110-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${(-110+offset_from_limit)*PI/180}" upper="${(110-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="fore_arm"/>
     <child link="wrist"/>
     <origin xyz="0 0 0.240"  rpy="0.0 -1.5707963267 0"/>
@@ -205,7 +205,7 @@
 
   <joint name="j6" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.5"/>
+    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="wrist"/>
     <child link="end_effector"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>

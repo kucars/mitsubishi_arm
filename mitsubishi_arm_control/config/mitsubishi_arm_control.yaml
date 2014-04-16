@@ -2,7 +2,7 @@ mitsubishi_arm:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 2.0 
+    publish_rate: 20.0 
   
   # Position Controllers ---------------------------------------
   joint1_position_controller:
@@ -41,7 +41,17 @@ mitsubishi_arm:
       - j4
       - j5
       - j6
-    state_publish_rate: 2.0
-    action_monitor_rate: 50.0
-    #constraints:
-    #  goal_time: 100.0                   # Override default
+    state_publish_rate: 20.0
+    action_monitor_rate: 20.0
+    constraints:
+      goal_time: 100.0                   # Override default
+
+  mitsubishi_arm_trajectory_controller_mec:
+    type: robot_mechanism_controllers/JointSplineTrajectoryController
+    joints:
+      - j1
+      - j2
+      - j3
+      - j4
+      - j5
+      - j6

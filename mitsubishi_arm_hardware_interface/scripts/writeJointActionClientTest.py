@@ -14,16 +14,25 @@ def JointTrajectoryActionClient():
     # Creates the SimpleActionClient, passing the type of the action
     # (FibonacciAction) to the constructor.
 
-    client = actionlib.SimpleActionClient('mitsubishi_joint_trajectory_server', control_msgs.msg.JointTrajectoryAction)
+    client = actionlib.SimpleActionClient('/mitsubishi_arm/mitsubishi_arm_trajectory_controller/follow_joint_trajectory', control_msgs.msg.FollowJointTrajectoryAction)
 
     # Waits until the action server has started up and started
     # listening for goals.
     client.wait_for_server()
 
     joint_max_limit=1.0
+
+    resolution=10
+    time_resolution=1.0
+    goal = control_msgs.msg.FollowJointTrajectoryGoal()
+    goal.trajectory.joint_names=['j1','j2','j3','j4','j5','j6']
+    for i in range (0,6):
+      j=control_msgs.msg.JointTolerance()
+      j.name="j"+str(i)
+      j.position=0.1
+      goal.path_tolerance.append(j)
     i=0
-    resolution=2
-    goal = control_msgs.msg.JointTrajectoryGoal()
+    print goal.path_tolerance
     while rospy.is_shutdown()==False:
       if i==resolution:
         i=0
@@ -33,13 +42,16 @@ def JointTrajectoryActionClient():
 
         # Prints out the result of executing the action
         print client.get_result()  # A FibonacciResult
+	return
         #print goal
         goal.trajectory.points=[]
+
       # Creates a goal to send to the action server.
       trajectory_point=trajectory_msgs.msg.JointTrajectoryPoint()
-      trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,i*(joint_max_limit/resolution),-0.4,1.5]
+      trajectory_point.positions=[0.1,i*(joint_max_limit/resolution),0.0,0.0,-0.4,1.5]
+      trajectory_point.time_from_start=rospy.Duration(time_resolution)*(i)
       goal.trajectory.points.append(trajectory_point)
-      
+      #goal.trajectory.header.stamp=rospy.Time.now() + rospy.Duration(2.0)
       i=i+1
 
     

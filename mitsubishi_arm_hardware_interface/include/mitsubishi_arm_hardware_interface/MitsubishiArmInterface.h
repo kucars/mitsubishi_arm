@@ -36,7 +36,6 @@ public:
 private:
   static const unsigned int joint_number=6;
 
-  HardwareInterfaceAdapter trajectory_interface;
   hardware_interface::JointStateInterface jnt_state_interface;
   hardware_interface::PositionJointInterface jnt_pos_interface;
   std::vector<double> cmd;
