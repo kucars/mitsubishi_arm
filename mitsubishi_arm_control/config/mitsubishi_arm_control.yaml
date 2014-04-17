@@ -46,12 +46,3 @@ mitsubishi_arm:
     constraints:
       goal_time: 100.0                   # Override default
 
-  mitsubishi_arm_trajectory_controller_mec:
-    type: robot_mechanism_controllers/JointSplineTrajectoryController
-    joints:
-      - j1
-      - j2
-      - j3
-      - j4
-      - j5
-      - j6

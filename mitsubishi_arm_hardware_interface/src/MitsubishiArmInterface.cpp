@@ -119,7 +119,7 @@ MitsubishiArmInterface::~MitsubishiArmInterface()
 
 void MitsubishiArmInterface::readHW()
 {
-    //std::cout << "going to read" << std::endl;
+
     //boost::mutex::scoped_lock lock(io_mutex);
     //std::cout << "reading" << std::endl;
 
@@ -226,11 +226,13 @@ void MitsubishiArmInterface::readHW()
     vel[3]=0.0;
     vel[4]=0.0;
     vel[5]=0.0;
+
 }
 
 
 void MitsubishiArmInterface::writeHW()
 {
+
     if(isEqual(cmd_previous[0],cmd[0],0.00001))
     {
         //std::cout << "no new commands to write"<< std::endl;
@@ -300,7 +302,7 @@ void MitsubishiArmInterface::writeHW()
         std::cout << "didn-t find E!" << '\n';
         exit(-1);
     }
-   // std::cout << "got respoinse"<< std::endl;
+
 
     // END READ
 }

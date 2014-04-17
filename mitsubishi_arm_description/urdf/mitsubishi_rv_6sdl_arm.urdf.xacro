@@ -52,14 +52,14 @@
     <limit effort="1000.0" lower="${-92*PI/180}" upper="${(135-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
-    <origin xyz="0.085 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
+    <origin xyz="0.079 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
   </joint>
 
 
   <link name="shoulder">
     <visual>
       <geometry>
-	<cylinder length="0.327" radius="0.085"/>
+	<cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
       <material name="white">
@@ -68,7 +68,7 @@
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.327" radius="0.085"/>
+        <cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
     </collision>
@@ -79,24 +79,24 @@
     <axis xyz="0 0 1"/>
     <parent link="shoulder"/>
     <child link="upper_arm"/>
-    <origin xyz="0 0.085 0"/>
+    <origin xyz="0 0.079 0"/>
   </joint>
 
   <link name="upper_arm">
     <visual>
       <geometry>
-	<box size="0.090 0.210 0.02"/>
+	<box size="0.090 0.222 0.02"/>
       </geometry>
-      <origin xyz="0 0.105 0.102"/>
+      <origin xyz="0 0.111 0.102"/>
       <material name="white">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
     <collision>
       <geometry>
-	<box size="0.090 0.110 0.02"/>
+	<box size="0.090 0.222 0.02"/>
       </geometry>
-      <origin xyz="0 0.19 -0.102"/>
+      <origin xyz="0 0.111 0.102"/>
     </collision>
   </link>
 
@@ -105,13 +105,13 @@
     <limit effort="1000.0" lower="${(-129+offset_from_limit)*PI/180}" upper="${(166-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="upper_arm"/>
     <child link="elbow"/>
-    <origin xyz="0 0.295 0" rpy="0 0 1.57"/>
+    <origin xyz="0 0.301 0" rpy="0 0 1.57"/>
   </joint>
 
   <link name="elbow">
     <visual>
       <geometry>
-	<cylinder length="0.327" radius="0.085"/>
+	<cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
       <material name="white">
@@ -120,7 +120,7 @@
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.327" radius="0.085"/>
+        <cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
     </collision>
@@ -156,24 +156,24 @@
     <limit effort="1000.0" lower="${(-160+offset_from_limit)*PI/180}" upper="${(160-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="elbow_block"/>
     <child link="fore_arm"/>
-    <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
+    <origin xyz="0.079 0 0"  rpy="0 1.5707963267 0"/>
   </joint>
 
   <link name="fore_arm">
     <visual>
       <geometry>
-	<box size="0.170 .120 .230"/>
+	<box size="0.170 .120 .346"/>
       </geometry>
-      <origin xyz="0 0 0.115"/>
+      <origin xyz="0 0 0.1815"/>
       <material name="white">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
     <collision>
       <geometry>
-	<box size="0.225 .126 .239"/>
+	<box size="0.170 .120 .346"/>
       </geometry>
-      <origin xyz="-0.0275 0 0"/>
+      <origin xyz="0 0 0.1815"/>
     </collision>
   </link>
 
@@ -182,7 +182,7 @@
     <limit effort="1000.0" lower="${(-110+offset_from_limit)*PI/180}" upper="${(110-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="fore_arm"/>
     <child link="wrist"/>
-    <origin xyz="0 0 0.240"  rpy="0.0 -1.5707963267 0"/>
+    <origin xyz="0 0 0.346"  rpy="0.0 -1.5707963267 0"/>
   </joint>
 
   <link name="wrist">
@@ -207,8 +207,35 @@
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.05"/>
     <parent link="wrist"/>
-    <child link="end_effector"/>
+    <child link="torque_sensor"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
+  </joint>
+
+  <link name="torque_sensor">
+    <visual>
+     <geometry>
+	<cylinder  length="0.065" radius="0.035"/>
+      </geometry>
+      <origin xyz="0 0 0.0325"/> 
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<box size="0.02 .02 0.065"/>
+      </geometry>
+      <origin xyz="0 0 0.065"/> 
+    </collision>
+  </link>
+
+
+  <joint name="torque_sensor_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.05"/>
+    <parent link="torque_sensor"/>
+    <child link="end_effector"/>
+    <origin xyz="0 0 0.065"  rpy="0 0 0"/> <!-- original is 0.085 but we have the torque sensor...-->
   </joint>
 
   <link name="end_effector">

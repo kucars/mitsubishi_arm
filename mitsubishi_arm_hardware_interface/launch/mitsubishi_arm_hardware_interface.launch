@@ -1,3 +1,13 @@
 <launch>
-  <node name="mitsubishi_arm_hardware_interface" pkg="mitsubishi_arm_hardware_interface" type="mitsubishi_arm_hardware_interface_dummy_node" respawn="false" output="screen" ns="/mitsubishi_arm"/>
+  <arg name="model" default="$(find mitsubishi_arm_description)/robots/mitsubishi_rv_6sdl.urdf.xacro"/>
+  <arg name="gui" default="False" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+
+
+  <node name="mitsubishi_arm_hardware_interface" pkg="mitsubishi_arm_hardware_interface" type="mitsubishi_arm_hardware_interface_node" respawn="false" output="screen" ns="/mitsubishi_arm"/>
+
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node ns="/mitsubishi_arm" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
 </launch>

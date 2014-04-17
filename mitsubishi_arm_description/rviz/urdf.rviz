@@ -60,7 +60,7 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        barret_base_link:
+        barrett_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -139,6 +139,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        torque_sensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         upper_arm:
           Alpha: 1
           Show Axes: false
@@ -193,17 +198,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.53498
+      Distance: 2.11991
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 0.428465
+        Y: -0.00503499
+        Z: 0.568253
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.175398
+      Pitch: 0.535398
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.64859
+      Yaw: 3.59359
     Saved: ~
 Window Geometry:
   Displays:

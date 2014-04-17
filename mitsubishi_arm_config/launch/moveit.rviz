@@ -4,9 +4,14 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /MotionPlanning1/Planning Request1
+        - /Status1
+        - /MotionPlanning1
+        - /TF1
+        - /TF1/Frames1
+        - /TF1/Frames1/end_effector1
+        - /TF1/Frames1/end_effector1/Position1
       Splitter Ratio: 0.74256
-    Tree Height: 415
+    Tree Height: 891
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -80,6 +85,11 @@ Visualization Manager:
             Show Trail: false
             Value: true
           shoulder_block:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          torque_sensor:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -171,6 +181,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          torque_sensor:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           upper_arm:
             Alpha: 1
             Show Axes: false
@@ -184,6 +199,50 @@ Visualization Manager:
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: true
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_link:
+          Value: true
+        elbow:
+          Value: true
+        elbow_block:
+          Value: true
+        end_effector:
+          Value: true
+        fore_arm:
+          Value: true
+        shoulder:
+          Value: true
+        shoulder_block:
+          Value: true
+        torque_sensor:
+          Value: true
+        upper_arm:
+          Value: true
+        wrist:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        base_link:
+          shoulder_block:
+            shoulder:
+              upper_arm:
+                elbow:
+                  elbow_block:
+                    fore_arm:
+                      wrist:
+                        torque_sensor:
+                          end_effector:
+                            {}
+      Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
@@ -200,31 +259,31 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.9965
+      Distance: 2.14069
       Focal Point:
         X: 0.113567
         Y: 0.10592
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.279796
+      Pitch: 0.00479752
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.33359
+      Yaw: 1.39541
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 744
+  Height: 1056
   Help:
     collapsed: false
   Hide Left Dock: false
   Hide Right Dock: false
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000002a2fc0200000004fc00000028000002a2000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff0000016100000000000000000000026d000002a200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1301
-  X: 57
-  Y: -4
+  Width: 1855
+  X: 58
+  Y: 24
