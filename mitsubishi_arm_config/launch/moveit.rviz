@@ -8,10 +8,8 @@ Panels:
         - /MotionPlanning1
         - /TF1
         - /TF1/Frames1
-        - /TF1/Frames1/end_effector1
-        - /TF1/Frames1/end_effector1/Position1
       Splitter Ratio: 0.74256
-    Tree Height: 891
+    Tree Height: 415
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -259,17 +257,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.14069
+      Distance: 1.37659
       Focal Point:
         X: 0.113567
         Y: 0.10592
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.00479752
+      Pitch: -0.165202
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 1.39541
+      Yaw: 0.23541
     Saved: ~
 Window Geometry:
   Displays:
