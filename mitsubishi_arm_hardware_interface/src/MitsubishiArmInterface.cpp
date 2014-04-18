@@ -233,7 +233,12 @@ void MitsubishiArmInterface::readHW()
 void MitsubishiArmInterface::writeHW()
 {
 
-    if(isEqual(cmd_previous[0],cmd[0],0.00001))
+    if(isEqual(cmd_previous[0],cmd[0],0.00001)&&
+       isEqual(cmd_previous[1],cmd[1],0.00001)&&
+       isEqual(cmd_previous[2],cmd[2],0.00001)&&
+       isEqual(cmd_previous[3],cmd[3],0.00001)&&
+       isEqual(cmd_previous[4],cmd[4],0.00001)&&
+       isEqual(cmd_previous[5],cmd[5],0.00001))
     {
         //std::cout << "no new commands to write"<< std::endl;
         cmd_previous=cmd;
