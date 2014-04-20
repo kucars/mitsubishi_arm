@@ -2,6 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="mitsubishi_arm">
   
   <!-- LINKS   -->  
-  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.urdf.xacro" />
+  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.xacro" />
 </robot>
 
