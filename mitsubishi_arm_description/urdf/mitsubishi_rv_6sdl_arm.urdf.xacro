@@ -223,9 +223,12 @@
     </visual>
     <collision>
      <geometry>
-	<box size="0.02 .02 0.065"/>
+	<cylinder  length="0.065" radius="0.035"/>
       </geometry>
-      <origin xyz="0 0 0.065"/> 
+      <origin xyz="0 0 0.0325"/> 
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
     </collision>
   </link>
 

@@ -3,7 +3,7 @@
   <rosparam file="$(find mitsubishi_arm_control)/config/mitsubishi_arm_control.yaml" command="load"/>
 
   <!-- load the controllers -->
-  <!--<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/mitsubishi_arm" args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller joint6_position_controller"/>-->
+  <!--<node ns="/mitsubishi_arm"  name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller joint6_position_controller"/>-->
 
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/mitsubishi_arm" args="joint_state_controller mitsubishi_arm_trajectory_controller"/>
+  <node ns="/mitsubishi_arm" name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller mitsubishi_arm_trajectory_controller"/>
 </launch>

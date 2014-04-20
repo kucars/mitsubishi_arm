@@ -9,7 +9,7 @@ Panels:
         - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.74256
-    Tree Height: 415
+    Tree Height: 891
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -257,17 +257,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.37659
+      Distance: 2.42602
       Focal Point:
         X: 0.113567
         Y: 0.10592
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: -0.165202
+      Pitch: 0.029798
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.23541
+      Yaw: 5.93359
     Saved: ~
 Window Geometry:
   Displays:

@@ -30,7 +30,6 @@ mitsubishi_arm:
     joint: j6
     pid: {p: 1.0, i: 0.0, d: 0.0}
 
-
   # Trajectory Controllers ---------------------------------------
   mitsubishi_arm_trajectory_controller:
     type: position_controllers/JointTrajectoryController
