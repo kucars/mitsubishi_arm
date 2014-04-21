@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES mitsubishi_arm_hardware_interface
-#  CATKIN_DEPENDS roscpp rospy
+  CATKIN_DEPENDS roscpp controller_manager
 #  DEPENDS system_lib
 )
 
