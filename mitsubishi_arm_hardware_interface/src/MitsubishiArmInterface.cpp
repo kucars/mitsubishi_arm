@@ -74,10 +74,10 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
 
     // Set Baud Rate
-    cfsetospeed (&tty, B19200);
-    cfsetispeed (&tty, B19200);
+    cfsetospeed (&tty, B9600);
+    cfsetispeed (&tty, B9600);
 
-    long BAUD    =B19200;
+    long BAUD    =B9600;
 
     tty.c_cflag = BAUD | CRTSCTS | CS8 | CLOCAL | CREAD | PARENB;
 

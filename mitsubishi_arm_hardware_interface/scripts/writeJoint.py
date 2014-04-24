@@ -1,52 +1,99 @@
 #!/usr/bin/env python
+
+#################################################################################
+#                                                                               #
+# Mitsubishi RV-6SDL joint position reading and command example                 #
+#                                                                               #
+# by Rui P. de Figueiredo and Tarek Taha, Khalifa University Robotics Institute #
+#                                                                               #                                                           
+#################################################################################
+
 import rospy
 import serial
 import time
 
-#COM.baudrate=115200
+# Open serial port connection
+baudrate=19200
+COM =serial.Serial('/dev/ttyUSB0',baudrate)
+COM.parity = 'E'
+COM.stopbits = 2
+COM.timeout= 0.0
 
+###################################
+# Read joint angle values routine #
+###################################
 
-if __name__=="__main__":
-  rospy.init_node('cyber_glove_teleop')
-  j =[0.0,0.0,0.0,0.0,0.0,0.0]
-  #j2 =[0.2,0.2,0.0,0.2,-0.3,1.0]
+buffer =[]
 
-  COM =serial.Serial('/dev/ttyUSB0',9600)
-  COM.parity = 'E'
-  COM.stopbits = 2
-  COM.timeout= 0.0
-  print COM
-  buffer = []
-  r=rospy.Rate(10) # 10 hz
+# Handshake: Send "1\r\n" to enter reading routine (read mode) and wait for response
+COM.write("1\r\n") 
+while 1: # Get response
+  read_char = COM.read(1)
+  buffer.append(read_char) #
+    
+  if read_char == '\n': # finish reading
+    break
 
-  counter=0;
-  init=0
-  while rospy.is_shutdown()==False:
-    if init==0:
-        COM.write("2\r\n") # tells slave to init
-    init=1
-    counter = counter+1
-    adder = counter % 2
-    print 'reading'
-    A = COM.read(1)
-    #A = COM.read(1)
-    print 'read'
-    buffer.append(A)
-    if A == '\n':
-      if "M" in buffer:
-        print "GOT an M: ", buffer
-	if adder==1:
-          S = str(j[0]) + ',' + str(j[1]+adder) + ',' + str(j[2]) + ',' + str(j[3]) + ',' + str(j[4]) + ',' + str(j[5]) + "\r\n"
-        else:
-          S = str(j[0]-1.0) + ',' + str(j[1]) + ',' + str(j[2]) + ',' + str(j[3]) + ',' + str(j[4]) + ',' + str(j[5]) + "\r\n"
-        print "SENDING:",S
-        COM.write(S)
-        print 'SENT'
-	init=0
-        A = []
-      print buffer
-      buffer = []
-    #r.sleep()
-print "FINISH, i will close the serial port now"
+if "R" not in buffer:   # READ ("R") MODE
+  exit(1) # something went wrong while reading
+# End handshake
+
+# Get joint values
+joint_values_buffer = ""
+
+while '\n' not in joint_values_buffer:
+  read_char=COM.read(1)
+  joint_values_buffer=joint_values_buffer+str(read_char)
+
+print joint_values_buffer # 
+# End get joint values
+
+# Finalize reading routine by reading a "E" character
+buffer = []
+while '\n' not in buffer: # Get response
+  read_char = COM.read(1)
+  buffer.append(read_char) #
+
+if "E" not in buffer:   # READ ("R") MODE
+  exit(1) # something went wrong while reading
+# End reading routine
+
+###########################################
+# Send desired joint angle values routine #
+###########################################
+
+buffer =[]
+
+# Handshake: Send "2\r\n" to enter commanding routine (move mode) and wait for response
+COM.write("2\r\n") 
+while 1: # Get response
+ 
+  read_char = COM.read(1)
+  buffer.append(read_char) #
+    
+  if read_char == '\n': # finish reading
+    break
+
+print buffer
+if "M" not in buffer: # READ END ("E") CHARACTER
+  exit(1) # something went wrong while reading
+# End handshake
+
+command = [0.0,0.0,0.0,0.0,0.0,0.0]
+S = str(command[0]) + ',' + str(command[1]) + ',' + str(command[2]) + ',' + str(command[3]) + ',' + str(command[4]) + ',' + str(command[5]) + "\r\n"
+COM.write(S) # Send command
+
+# Finalize reading routine by reading a "E" character
+buffer = []
+while '\n' not in buffer: # Get response
+  read_char = COM.read(1)
+  buffer.append(read_char) 
+
+if "E" not in buffer: # READ END ("E") CHARACTER
+  exit(1) # something went wrong while reading
+# End reading routine
+
 COM.close()
+
+
 	
