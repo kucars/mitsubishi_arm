@@ -79,7 +79,7 @@ if "M" not in buffer: # READ END ("E") CHARACTER
   exit(1) # something went wrong while reading
 # End handshake
 
-command = [5.31,0.52,1243.94,0.06,3.78,0.01] # IN MILIMETERS
+command = [0.0,0.0,0.0,0.0,0.0,0.0] # IN MILIMETERS
 S = str(command[0]) + ',' + str(command[1]) + ',' + str(command[2]) + ',' + str(command[3]) + ',' + str(command[4]) + ',' + str(command[5]) + "\r\n"
 COM.write(S) # Send command
 
