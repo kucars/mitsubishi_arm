@@ -4,8 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Status1
-        - /MotionPlanning1
         - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.74256
@@ -97,6 +95,10 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           wrist:
             Alpha: 1
             Show Axes: false
@@ -189,6 +191,10 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           wrist:
             Alpha: 1
             Show Axes: false
@@ -221,6 +227,8 @@ Visualization Manager:
           Value: true
         upper_arm:
           Value: true
+        world:
+          Value: true
         wrist:
           Value: true
       Marker Scale: 1
@@ -229,17 +237,18 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          shoulder_block:
-            shoulder:
-              upper_arm:
-                elbow:
-                  elbow_block:
-                    fore_arm:
-                      wrist:
-                        torque_sensor:
-                          end_effector:
-                            {}
+        world:
+          base_link:
+            shoulder_block:
+              shoulder:
+                upper_arm:
+                  elbow:
+                    elbow_block:
+                      fore_arm:
+                        wrist:
+                          torque_sensor:
+                            end_effector:
+                              {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -257,31 +266,31 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.42602
+      Distance: 3.16995
       Focal Point:
         X: 0.113567
         Y: 0.10592
         Z: 2.23518e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: -0.175202
+      Pitch: 0.299798
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.2336
+      Yaw: 1.50541
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 744
+  Height: 1056
   Help:
     collapsed: false
   Hide Left Dock: false
   Hide Right Dock: false
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000002a2fc0200000004fc00000028000002a2000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff0000016100000000000000000000026d000002a200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da0000019d0100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1301
+  Width: 1855
   X: 58
   Y: 24

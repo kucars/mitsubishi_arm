@@ -74,10 +74,10 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
 
     // Set Baud Rate
-    cfsetospeed (&tty, B9600);
-    cfsetispeed (&tty, B9600);
+    cfsetospeed (&tty, B19200);
+    cfsetispeed (&tty, B19200);
 
-    long BAUD    =B9600;
+    long BAUD    =B19200;
 
     tty.c_cflag = BAUD | CRTSCTS | CS8 | CLOCAL | CREAD | PARENB;
 
@@ -95,7 +95,8 @@ MitsubishiArmInterface::MitsubishiArmInterface()
         std::cout << "connected successfuly" <<std::endl;
     usleep(10000);
 
-
+    char buf [256];
+    read( USB, &buf, 1); // CLEAN BUFFER
     readHW();
 
     cmd=pos;
