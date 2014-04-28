@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
@@ -18,12 +19,10 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description"
-	 command="$(find xacro)/xacro.py '$(find mitsubishi_arm_description)/robots/mitsubishi_rv_6sdl.urdf.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find mitsubishi_arm_description)/robots/mitsubishi_rv_6sdl.urdf.xacro'" />
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model mitsubishi_arm -param robot_description"/>
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model mitsubishi_arm -param robot_description"/>
 
   <!-- ros_control mitsubishi_arm launch file -->
   <!--include file="$(find mitsubishi_arm_control)/launch/mitsubishi_arm_control.launch" /-->

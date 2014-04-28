@@ -36,7 +36,7 @@
     <parent link="base_link"/>
     <child link="shoulder_block"/>
     <origin xyz="0 0 0.239"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- shoulder_block -->
@@ -72,7 +72,7 @@
     <parent link="shoulder_block"/>
     <child link="shoulder"/>
     <origin xyz="0.079 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- shoulder -->
@@ -108,7 +108,7 @@
     <parent link="shoulder"/>
     <child link="upper_arm"/>
     <origin xyz="0 0.079 0"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- upper_arm -->
@@ -144,7 +144,7 @@
     <parent link="upper_arm"/>
     <child link="elbow"/>
     <origin xyz="0 0.301 0" rpy="0 0 1.57"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- elbow -->
@@ -179,7 +179,7 @@
     <parent link="elbow"/>
     <child link="elbow_block"/>
     <origin xyz="0 -0.100 0"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- elbow_block -->
@@ -215,7 +215,7 @@
     <parent link="elbow_block"/>
     <child link="fore_arm"/>
     <origin xyz="0.079 0 0"  rpy="0 1.5707963267 0"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- fore_arm -->
@@ -251,7 +251,7 @@
     <parent link="fore_arm"/>
     <child link="wrist"/>
     <origin xyz="0 0 0.346"  rpy="0.0 -1.5707963267 0"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- wrist -->
@@ -287,7 +287,7 @@
     <parent link="wrist"/>
     <child link="torque_sensor"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
-    <dynamics damping="0.0"/>
+   <dynamics damping="10.0" friction="100.0" />
   </joint>
 
   <!-- torque_sensor -->
@@ -327,7 +327,7 @@
     <parent link="torque_sensor"/>
     <child link="end_effector"/>
     <origin xyz="0 0 0.065"  rpy="0 0 0"/> <!-- original is 0.085 but we have the torque sensor...-->
-    <dynamics damping="0.0"/>
+   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <!-- end_effector -->

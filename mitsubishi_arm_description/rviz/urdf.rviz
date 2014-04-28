@@ -102,6 +102,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         wrist:
           Alpha: 1
           Show Axes: false
@@ -151,7 +155,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.11991
+      Distance: 4.18433
       Focal Point:
         X: 0.428465
         Y: -0.00503499
@@ -179,5 +183,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1301
-  X: 58
+  X: 57
   Y: 24

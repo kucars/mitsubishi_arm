@@ -5,7 +5,24 @@
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.gazebo" />
 
   <!-- Import Rviz colors -->
-  <xacro:include filename="$(find rrbot_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/materials.xacro" />
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/mitsubishi_arm</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_joint_trajectory" filename="libgazebo_ros_joint_pose_trajectory.so">
+      <robotNamespace>/mitsubishi_arm</robotNamespace>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+    </plugin>
+  </gazebo>
+
 
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>

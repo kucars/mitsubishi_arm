@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<robot>
+  <!-- base_link -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- shoulder_block -->
+  <gazebo reference="shoulder_block">
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- shoulder -->
+  <gazebo reference="shoulder">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- upper_arm -->
+  <gazebo reference="upper_arm">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- elbow -->
+  <gazebo reference="elbow">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- elbow_block -->
+  <gazebo reference="elbow_block">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- fore_arm -->
+  <gazebo reference="fore_arm">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <!-- wrist -->
+  <gazebo reference="wrist">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- torque_sensor -->
+  <gazebo reference="torque_sensor">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <!-- end_effector -->
+  <gazebo reference="end_effector">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <static>false</static>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+
+</robot>
