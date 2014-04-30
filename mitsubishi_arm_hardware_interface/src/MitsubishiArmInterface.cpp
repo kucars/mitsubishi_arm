@@ -11,49 +11,6 @@ MitsubishiArmInterface::MitsubishiArmInterface()
     cmd_previous.resize(joint_number);
 
 
-    // connect and register the joint state interface
-    hardware_interface::JointStateHandle state_handle_j1("j1", &pos[0], &vel[0], &eff[0]);
-    jnt_state_interface.registerHandle(state_handle_j1);
-
-    hardware_interface::JointStateHandle state_handle_j2("j2", &pos[1], &vel[1], &eff[1]);
-    jnt_state_interface.registerHandle(state_handle_j2);
-
-    hardware_interface::JointStateHandle state_handle_j3("j3", &pos[2], &vel[2], &eff[2]);
-    jnt_state_interface.registerHandle(state_handle_j3);
-
-    hardware_interface::JointStateHandle state_handle_j4("j4", &pos[3], &vel[3], &eff[3]);
-    jnt_state_interface.registerHandle(state_handle_j4);
-
-    hardware_interface::JointStateHandle state_handle_j5("j5", &pos[4], &vel[4], &eff[4]);
-    jnt_state_interface.registerHandle(state_handle_j5);
-
-    hardware_interface::JointStateHandle state_handle_j6("j6", &pos[5], &vel[5], &eff[5]);
-    jnt_state_interface.registerHandle(state_handle_j6);
-
-    registerInterface(&jnt_state_interface);
-
-    // connect and register the joint position interface
-    hardware_interface::JointHandle pos_handle_j1(jnt_state_interface.getHandle("j1"), &cmd[0]);
-    jnt_pos_interface.registerHandle(pos_handle_j1);
-
-    hardware_interface::JointHandle pos_handle_j2(jnt_state_interface.getHandle("j2"), &cmd[1]);
-    jnt_pos_interface.registerHandle(pos_handle_j2);
-
-    hardware_interface::JointHandle pos_handle_j3(jnt_state_interface.getHandle("j3"), &cmd[2]);
-    jnt_pos_interface.registerHandle(pos_handle_j3);
-
-    hardware_interface::JointHandle pos_handle_j4(jnt_state_interface.getHandle("j4"), &cmd[3]);
-    jnt_pos_interface.registerHandle(pos_handle_j4);
-
-    hardware_interface::JointHandle pos_handle_j5(jnt_state_interface.getHandle("j5"), &cmd[4]);
-    jnt_pos_interface.registerHandle(pos_handle_j5);
-
-    hardware_interface::JointHandle pos_handle_j6(jnt_state_interface.getHandle("j6"), &cmd[5]);
-    jnt_pos_interface.registerHandle(pos_handle_j6);
-
-    registerInterface(&jnt_pos_interface);
-
-
     // Open File Descriptor
     USB = open( "/dev/ttyUSB0",  O_RDWR | O_NOCTTY);
 
@@ -110,7 +67,8 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
     std::cout << "Init done!" << '\n';
 
-
+//    init();
+    return;
 }
 
 MitsubishiArmInterface::~MitsubishiArmInterface()
@@ -118,11 +76,106 @@ MitsubishiArmInterface::~MitsubishiArmInterface()
     close(USB);
 }
 
+bool MitsubishiArmInterface::init()
+{
+    // connect and register the joint state interface
+    hardware_interface::JointStateHandle state_handle_j1("j1", &pos[0], &vel[0], &eff[0]);
+    jnt_state_interface.registerHandle(state_handle_j1);
+
+    hardware_interface::JointStateHandle state_handle_j2("j2", &pos[1], &vel[1], &eff[1]);
+    jnt_state_interface.registerHandle(state_handle_j2);
+
+    hardware_interface::JointStateHandle state_handle_j3("j3", &pos[2], &vel[2], &eff[2]);
+    jnt_state_interface.registerHandle(state_handle_j3);
+
+    hardware_interface::JointStateHandle state_handle_j4("j4", &pos[3], &vel[3], &eff[3]);
+    jnt_state_interface.registerHandle(state_handle_j4);
+
+    hardware_interface::JointStateHandle state_handle_j5("j5", &pos[4], &vel[4], &eff[4]);
+    jnt_state_interface.registerHandle(state_handle_j5);
+
+    hardware_interface::JointStateHandle state_handle_j6("j6", &pos[5], &vel[5], &eff[5]);
+    jnt_state_interface.registerHandle(state_handle_j6);
+
+    registerInterface(&jnt_state_interface);
+
+    // connect and register the joint position interface
+    hardware_interface::JointHandle pos_handle_j1(jnt_state_interface.getHandle("j1"), &cmd[0]);
+    jnt_pos_interface.registerHandle(pos_handle_j1);
+
+    hardware_interface::JointHandle pos_handle_j2(jnt_state_interface.getHandle("j2"), &cmd[1]);
+    jnt_pos_interface.registerHandle(pos_handle_j2);
+
+    hardware_interface::JointHandle pos_handle_j3(jnt_state_interface.getHandle("j3"), &cmd[2]);
+    jnt_pos_interface.registerHandle(pos_handle_j3);
+
+    hardware_interface::JointHandle pos_handle_j4(jnt_state_interface.getHandle("j4"), &cmd[3]);
+    jnt_pos_interface.registerHandle(pos_handle_j4);
+
+    hardware_interface::JointHandle pos_handle_j5(jnt_state_interface.getHandle("j5"), &cmd[4]);
+    jnt_pos_interface.registerHandle(pos_handle_j5);
+
+    hardware_interface::JointHandle pos_handle_j6(jnt_state_interface.getHandle("j6"), &cmd[5]);
+    jnt_pos_interface.registerHandle(pos_handle_j6);
+
+    registerInterface(&jnt_pos_interface);
+}
+
+bool MitsubishiArmInterface::init(hardware_interface::JointStateInterface  & jnt_state_interface_,
+                                  hardware_interface::PositionJointInterface & jnt_pos_interface_)
+{
+
+    // connect and register the joint state interface
+    hardware_interface::JointStateHandle state_handle_j1("j1", &pos[0], &vel[0], &eff[0]);
+    jnt_state_interface_.registerHandle(state_handle_j1);
+
+    hardware_interface::JointStateHandle state_handle_j2("j2", &pos[1], &vel[1], &eff[1]);
+    jnt_state_interface_.registerHandle(state_handle_j2);
+
+    hardware_interface::JointStateHandle state_handle_j3("j3", &pos[2], &vel[2], &eff[2]);
+    jnt_state_interface_.registerHandle(state_handle_j3);
+
+    hardware_interface::JointStateHandle state_handle_j4("j4", &pos[3], &vel[3], &eff[3]);
+    jnt_state_interface_.registerHandle(state_handle_j4);
+
+    hardware_interface::JointStateHandle state_handle_j5("j5", &pos[4], &vel[4], &eff[4]);
+    jnt_state_interface_.registerHandle(state_handle_j5);
+
+    hardware_interface::JointStateHandle state_handle_j6("j6", &pos[5], &vel[5], &eff[5]);
+    jnt_state_interface_.registerHandle(state_handle_j6);
+
+    registerInterface(&jnt_state_interface_);
+
+    // connect and register the joint position interface
+    hardware_interface::JointHandle pos_handle_j1(jnt_state_interface_.getHandle("j1"), &cmd[0]);
+    jnt_pos_interface_.registerHandle(pos_handle_j1);
+
+    hardware_interface::JointHandle pos_handle_j2(jnt_state_interface_.getHandle("j2"), &cmd[1]);
+    jnt_pos_interface_.registerHandle(pos_handle_j2);
+
+    hardware_interface::JointHandle pos_handle_j3(jnt_state_interface_.getHandle("j3"), &cmd[2]);
+    jnt_pos_interface_.registerHandle(pos_handle_j3);
+
+    hardware_interface::JointHandle pos_handle_j4(jnt_state_interface_.getHandle("j4"), &cmd[3]);
+    jnt_pos_interface_.registerHandle(pos_handle_j4);
+
+    hardware_interface::JointHandle pos_handle_j5(jnt_state_interface_.getHandle("j5"), &cmd[4]);
+    jnt_pos_interface_.registerHandle(pos_handle_j5);
+
+    hardware_interface::JointHandle pos_handle_j6(jnt_state_interface_.getHandle("j6"), &cmd[5]);
+    jnt_pos_interface_.registerHandle(pos_handle_j6);
+
+    registerInterface(&jnt_pos_interface_);
+
+}
+
+
+
+
 void MitsubishiArmInterface::readHW()
 {
 
     //boost::mutex::scoped_lock lock(io_mutex);
-    //std::cout << "reading" << std::endl;
 
     // WRITE READ to robot
     unsigned char cmd_msg[] = "1\r\n";
@@ -133,6 +186,7 @@ void MitsubishiArmInterface::readHW()
         n_written += write( USB, &cmd_msg[n_written], 1 );
     }
     while (cmd_msg[n_written-1] != '\n');
+
 
     // READ RESPONSE (R)
     char buf [256];
@@ -147,11 +201,13 @@ void MitsubishiArmInterface::readHW()
     }
     while( buf[0] != '\n');
 
+
     if (response.find("R\r\n") == std::string::npos)
     {
         std::cout << "didn-t find R!" << '\n';
         exit(-1);
     }
+
 
     response.clear();
     // END READ
@@ -227,6 +283,7 @@ void MitsubishiArmInterface::readHW()
     vel[3]=0.0;
     vel[4]=0.0;
     vel[5]=0.0;
+
 
 }
 
