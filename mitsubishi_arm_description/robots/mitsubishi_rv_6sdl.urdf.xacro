@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="mitsubishi_arm">
+  <property name="table_y_length" value="1.0" />
+  <property name="camera_table_y_offset" value="0.265" />
+  <property name="camera_table_x_offset" value="1.0" />
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.gazebo" />
@@ -35,5 +38,17 @@
   <!-- LINKS   -->  
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.xacro" />
 
+  <!-- Kinect -->
+  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />
+
+
+  <link name="arm_to_kinect">
+  </link>
+
+  <joint name="arm_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_to_kinect"/>
+    <origin xyz="0.50 ${table_y_length/2.0 + camera_table_y_offset} 0" rpy="0 0 0"/>
+  </joint>
 </robot>
 

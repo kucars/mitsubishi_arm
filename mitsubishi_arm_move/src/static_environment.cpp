@@ -57,7 +57,7 @@ int main(int argc, char **argv)
   primitive.type = primitive.BOX;
   primitive.dimensions.resize(3);
   primitive.dimensions[0] = 2.0;
-  primitive.dimensions[1] = 2.0;
+  primitive.dimensions[1] = 1.0;
   primitive.dimensions[2] = 0.1;
 
 

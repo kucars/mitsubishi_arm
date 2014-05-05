@@ -6,7 +6,11 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "mitsubishi_arm_hardware_interface");
     ros::NodeHandle node;
 
+    hardware_interface::JointStateInterface  jnt_state_interface_;
+    hardware_interface::PositionJointInterface jnt_pos_interface_;
+
     MitsubishiArmInterface robot;
+    robot.init(jnt_state_interface_, jnt_pos_interface_);
     controller_manager::ControllerManager cm(&robot, node);
 
     ros::AsyncSpinner spinner(4);
