@@ -11,5 +11,10 @@
   <include file="$(find mitsubishi_arm_config)/launch/moveit.launch"/>
 
   <node name="static_environment" pkg="mitsubishi_arm_move" type="static_environment" />
+
+
+
+
+
 </launch>
 

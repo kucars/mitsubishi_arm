@@ -6,8 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /MotionPlanning1
         - /TF1
         - /TF1/Frames1
+        - /PointCloud21
+        - /PointCloud21/Status1
       Splitter Ratio: 0.74256
     Tree Height: 891
   - Class: rviz/Help
@@ -53,10 +56,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          arm_to_kinect:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           base_link:
             Alpha: 1
             Show Axes: false
@@ -153,10 +152,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          arm_to_kinect:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           base_link:
             Alpha: 1
             Show Axes: false
@@ -219,9 +214,31 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        arm_to_kinect:
+        ar_marker_0:
+          Value: true
+        ar_marker_3:
+          Value: true
+        ar_marker_4:
+          Value: true
+        ar_marker_5:
+          Value: true
+        ar_marker_6:
+          Value: true
+        ar_marker_7:
+          Value: true
+        ar_marker_8:
           Value: true
         base_link:
+          Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
           Value: true
         elbow:
           Value: true
@@ -230,6 +247,8 @@ Visualization Manager:
         end_effector:
           Value: true
         fore_arm:
+          Value: true
+        marker:
           Value: true
         shoulder:
           Value: true
@@ -243,7 +262,7 @@ Visualization Manager:
           Value: true
         wrist:
           Value: true
-      Marker Scale: 1
+      Marker Scale: 0.4
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -251,8 +270,25 @@ Visualization Manager:
       Tree:
         world:
           base_link:
-            arm_to_kinect:
-              {}
+            marker:
+              camera_link:
+                camera_depth_frame:
+                  camera_depth_optical_frame:
+                    {}
+                camera_rgb_frame:
+                  camera_rgb_optical_frame:
+                    ar_marker_0:
+                      {}
+                    ar_marker_3:
+                      {}
+                    ar_marker_5:
+                      {}
+                    ar_marker_6:
+                      {}
+                    ar_marker_7:
+                      {}
+                    ar_marker_8:
+                      {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -262,7 +298,8 @@ Visualization Manager:
                         wrist:
                           torque_sensor:
                             end_effector:
-                              {}
+                              ar_marker_4:
+                                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -309,17 +346,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 4.64298
+      Distance: 1.61226
       Focal Point:
-        X: -0.0779337
-        Y: 0.625443
-        Z: 5.81146e-07
+        X: 0.503029
+        Y: 0.103138
+        Z: 0
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.154797
+      Pitch: 0.225398
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.15906
+      Yaw: 0.8154
     Saved: ~
 Window Geometry:
   Displays:
@@ -328,12 +365,12 @@ Window Geometry:
   Help:
     collapsed: false
   Hide Left Dock: false
-  Hide Right Dock: false
+  Hide Right Dock: true
   Motion Planning:
     collapsed: false
   QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000010100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1855
-  X: 58
-  Y: 24
+  X: 57
+  Y: -4

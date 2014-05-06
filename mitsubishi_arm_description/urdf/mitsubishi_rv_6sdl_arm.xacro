@@ -294,7 +294,7 @@
   <link name="torque_sensor">
     <visual>
      <geometry>
-	<cylinder  length="0.065" radius="0.035"/>
+	<cylinder  length="0.065" radius="0.065"/>
       </geometry>
       <origin xyz="0 0 0.0325"/> 
       <material name="white">
@@ -303,7 +303,7 @@
     </visual>
     <collision>
      <geometry>
-	<cylinder  length="0.065" radius="0.035"/>
+	<cylinder  length="0.065" radius="0.065"/>
       </geometry>
       <origin xyz="0 0 0.0325"/> 
       <material name="white">
