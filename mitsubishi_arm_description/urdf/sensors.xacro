@@ -3,7 +3,8 @@
   <property name="PI" value="3.1415926535897931" />
   <property name="offset_from_limit" value="5.0" />
 
-  <!-- shoulder_block -->
+  <link name="camera_link">
+  </link>
 
 
 </robot>

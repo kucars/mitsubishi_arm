@@ -6,13 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /MotionPlanning1
-        - /TF1
         - /TF1/Frames1
-        - /PointCloud21
-        - /PointCloud21/Status1
-      Splitter Ratio: 0.74256
-    Tree Height: 891
+      Splitter Ratio: 0.784387
+    Tree Height: 415
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -41,6 +37,99 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
+        elbow:
+          Value: true
+        elbow_block:
+          Value: true
+        end_effector:
+          Value: true
+        fore_arm:
+          Value: true
+        shoulder:
+          Value: true
+        shoulder_block:
+          Value: true
+        torque_sensor:
+          Value: true
+        upper_arm:
+          Value: true
+        world:
+          Value: true
+        wrist:
+          Value: true
+      Marker Scale: 0.4
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          base_link:
+            camera_link:
+              camera_depth_frame:
+                camera_depth_optical_frame:
+                  {}
+              camera_rgb_frame:
+                camera_rgb_optical_frame:
+                  {}
+            shoulder_block:
+              shoulder:
+                upper_arm:
+                  elbow:
+                    elbow_block:
+                      fore_arm:
+                        wrist:
+                          torque_sensor:
+                            end_effector:
+                              {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.01
+      Style: Points
+      Topic: /camera/depth_registered/points
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
     - Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       MoveIt_Goal_Tolerance: 1
@@ -61,6 +150,10 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           elbow:
             Alpha: 1
             Show Axes: false
@@ -111,8 +204,8 @@ Visualization Manager:
             Value: true
         Loop Animation: false
         Robot Alpha: 0.5
-        Show Robot Collision: false
-        Show Robot Visual: true
+        Show Robot Collision: true
+        Show Robot Visual: false
         Show Trail: false
         State Display Time: 0.05 s
         Trajectory Topic: /move_group/display_planned_path
@@ -157,6 +250,10 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           elbow:
             Alpha: 1
             Show Axes: false
@@ -209,128 +306,14 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
-    - Class: rviz/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-        ar_marker_0:
-          Value: true
-        ar_marker_3:
-          Value: true
-        ar_marker_4:
-          Value: true
-        ar_marker_5:
-          Value: true
-        ar_marker_6:
-          Value: true
-        ar_marker_7:
-          Value: true
-        ar_marker_8:
-          Value: true
-        base_link:
-          Value: true
-        camera_depth_frame:
-          Value: true
-        camera_depth_optical_frame:
-          Value: true
-        camera_link:
-          Value: true
-        camera_rgb_frame:
-          Value: true
-        camera_rgb_optical_frame:
-          Value: true
-        elbow:
-          Value: true
-        elbow_block:
-          Value: true
-        end_effector:
-          Value: true
-        fore_arm:
-          Value: true
-        marker:
-          Value: true
-        shoulder:
-          Value: true
-        shoulder_block:
-          Value: true
-        torque_sensor:
-          Value: true
-        upper_arm:
-          Value: true
-        world:
-          Value: true
-        wrist:
-          Value: true
-      Marker Scale: 0.4
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: true
-      Tree:
-        world:
-          base_link:
-            marker:
-              camera_link:
-                camera_depth_frame:
-                  camera_depth_optical_frame:
-                    {}
-                camera_rgb_frame:
-                  camera_rgb_optical_frame:
-                    ar_marker_0:
-                      {}
-                    ar_marker_3:
-                      {}
-                    ar_marker_5:
-                      {}
-                    ar_marker_6:
-                      {}
-                    ar_marker_7:
-                      {}
-                    ar_marker_8:
-                      {}
-            shoulder_block:
-              shoulder:
-                upper_arm:
-                  elbow:
-                    elbow_block:
-                      fore_arm:
-                        wrist:
-                          torque_sensor:
-                            end_effector:
-                              ar_marker_4:
-                                {}
-      Update Interval: 0
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 4096
-      Min Color: 0; 0; 0
-      Min Intensity: 0
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Queue Size: 10
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.01
-      Style: Points
-      Topic: /camera/depth_registered/points
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /visualization_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -346,17 +329,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.61226
+      Distance: 1.8713
       Focal Point:
-        X: 0.503029
-        Y: 0.103138
-        Z: 0
+        X: -0.20243
+        Y: 0.220059
+        Z: 2.38419e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.225398
+      Pitch: -0.149798
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.8154
+      Yaw: 6.24176
     Saved: ~
 Window Geometry:
   Displays:
@@ -368,9 +351,9 @@ Window Geometry:
   Hide Right Dock: true
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000010100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1855
-  X: 57
-  Y: -4
+  X: 58
+  Y: 24

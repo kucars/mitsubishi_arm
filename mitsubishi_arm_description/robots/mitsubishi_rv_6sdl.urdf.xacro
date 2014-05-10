@@ -41,24 +41,13 @@
   <!-- Kinect -->
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />
 
-
-  <!--<link name="camera_rgb_optical_frame">
-  </link>
-
+  <!-- kinect to base link -->
   <joint name="camera_in_world_joint" type="fixed">
-    <parent link="world"/>
-    <child link="camera_rgb_optical_frame"/>
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.796357 0.919602 0.431341" rpy="0.0247013 0.415733 -1.55723"/>
   </joint>  
 
-
-  <link name="camera_to_marker">
-  </link>
-
-  <joint name="camera_to_marker_joint" type="fixed">
-    <parent link="camera_rgb_optical_frame"/>
-    <child link="camera_to_marker"/>
-    <origin xyz="0.653 0.135 -0.17" rpy="-3.04074 -1.19202 -1.6786"/>
-  </joint>-->
 
 </robot>
 
