@@ -42,7 +42,7 @@
   <!--<xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->
 
   <!-- kinect to base link -->
- <!-- <joint name="camera_in_world_joint" type="fixed">
+  <!--<joint name="camera_in_world_joint" type="fixed">
     <parent link="base_link"/>
     <child link="camera_link"/>
     <origin xyz="0.796357 0.919602 0.431341" rpy="0.0247013 0.415733 -1.55723"/>
