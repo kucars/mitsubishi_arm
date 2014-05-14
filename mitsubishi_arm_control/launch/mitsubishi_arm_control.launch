@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find mitsubishi_arm_control)/config/mitsubishi_arm_control.yaml" command="load"/>
