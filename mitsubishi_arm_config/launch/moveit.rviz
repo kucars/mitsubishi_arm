@@ -56,6 +56,104 @@ Visualization Manager:
           Value: true
         fore_arm:
           Value: true
+        object_1:
+          Value: true
+        object_10:
+          Value: true
+        object_11:
+          Value: true
+        object_12:
+          Value: true
+        object_13:
+          Value: true
+        object_14:
+          Value: true
+        object_15:
+          Value: true
+        object_16:
+          Value: true
+        object_17:
+          Value: true
+        object_18:
+          Value: true
+        object_19:
+          Value: true
+        object_2:
+          Value: true
+        object_20:
+          Value: true
+        object_21:
+          Value: true
+        object_22:
+          Value: true
+        object_23:
+          Value: true
+        object_24:
+          Value: true
+        object_25:
+          Value: true
+        object_26:
+          Value: true
+        object_27:
+          Value: true
+        object_28:
+          Value: true
+        object_29:
+          Value: true
+        object_3:
+          Value: true
+        object_30:
+          Value: true
+        object_31:
+          Value: true
+        object_32:
+          Value: true
+        object_33:
+          Value: true
+        object_34:
+          Value: true
+        object_35:
+          Value: true
+        object_36:
+          Value: true
+        object_37:
+          Value: true
+        object_38:
+          Value: true
+        object_39:
+          Value: true
+        object_4:
+          Value: true
+        object_40:
+          Value: true
+        object_41:
+          Value: true
+        object_42:
+          Value: true
+        object_43:
+          Value: true
+        object_44:
+          Value: true
+        object_45:
+          Value: true
+        object_46:
+          Value: true
+        object_47:
+          Value: true
+        object_48:
+          Value: true
+        object_49:
+          Value: true
+        object_5:
+          Value: true
+        object_6:
+          Value: true
+        object_7:
+          Value: true
+        object_8:
+          Value: true
+        object_9:
+          Value: true
         shoulder:
           Value: true
         shoulder_block:
@@ -79,6 +177,104 @@ Visualization Manager:
             camera_link:
               camera_optical_frame:
                 {}
+            object_1:
+              {}
+            object_10:
+              {}
+            object_11:
+              {}
+            object_12:
+              {}
+            object_13:
+              {}
+            object_14:
+              {}
+            object_15:
+              {}
+            object_16:
+              {}
+            object_17:
+              {}
+            object_18:
+              {}
+            object_19:
+              {}
+            object_2:
+              {}
+            object_20:
+              {}
+            object_21:
+              {}
+            object_22:
+              {}
+            object_23:
+              {}
+            object_24:
+              {}
+            object_25:
+              {}
+            object_26:
+              {}
+            object_27:
+              {}
+            object_28:
+              {}
+            object_29:
+              {}
+            object_3:
+              {}
+            object_30:
+              {}
+            object_31:
+              {}
+            object_32:
+              {}
+            object_33:
+              {}
+            object_34:
+              {}
+            object_35:
+              {}
+            object_36:
+              {}
+            object_37:
+              {}
+            object_38:
+              {}
+            object_39:
+              {}
+            object_4:
+              {}
+            object_40:
+              {}
+            object_41:
+              {}
+            object_42:
+              {}
+            object_43:
+              {}
+            object_44:
+              {}
+            object_45:
+              {}
+            object_46:
+              {}
+            object_47:
+              {}
+            object_48:
+              {}
+            object_49:
+              {}
+            object_5:
+              {}
+            object_6:
+              {}
+            object_7:
+              {}
+            object_8:
+              {}
+            object_9:
+              {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -307,13 +503,29 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
     - Class: rviz/Marker
-      Enabled: false
-      Marker Topic: /visualization_marker
-      Name: Marker
+      Enabled: true
+      Marker Topic: /tabletop_segmentation_markers
+      Name: tabletop
+      Namespaces:
+        tabletop_node: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /detector_markers
+      Name: pose estimation
+      Namespaces:
+        detection: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /move_group/display_contacts
+      Name: MarkerArray
       Namespaces:
         {}
       Queue Size: 100
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -329,7 +541,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 3.25038
+      Distance: 1.45387
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -341,10 +553,10 @@ Visualization Manager:
         Z: 2.38419e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: -0.094798
+      Pitch: -0.199798
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.21676
+      Yaw: 0.0485723
     Saved: ~
 Window Geometry:
   Displays:
@@ -356,7 +568,7 @@ Window Geometry:
   Hide Right Dock: true
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000002a2fc0200000004fc00000028000002a2000001920100001dfa000000010100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff0000016100000000000000000000026d000002a200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000002a2fc0200000004fc00000028000002a2000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff0000016100000000000000000000026d000002a200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1301
