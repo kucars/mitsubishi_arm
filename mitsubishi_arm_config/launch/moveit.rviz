@@ -325,13 +325,13 @@ Visualization Manager:
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
-      Enabled: false
+      Enabled: true
       Marker Topic: /object_details_markers_out
       Name: object details
       Namespaces:
-        {}
+        object_parts: true
       Queue Size: 100
-      Value: false
+      Value: true
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /occupied_cells_vis_array
@@ -384,17 +384,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.31218
+      Distance: 3.30668
       Focal Point:
         X: 0.651828
         Y: 0.0510497
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.144796
+      Pitch: 0.259796
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.148573
+      Yaw: 0.853572
     Saved: ~
 Window Geometry:
   Displays:
