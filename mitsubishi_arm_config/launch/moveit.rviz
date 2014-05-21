@@ -54,8 +54,6 @@ Visualization Manager:
           Value: true
         fore_arm:
           Value: true
-        object_1:
-          Value: true
         shoulder:
           Value: true
         shoulder_block:
@@ -79,8 +77,6 @@ Visualization Manager:
             camera_link:
               camera_optical_frame:
                 {}
-            object_1:
-              {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -313,7 +309,7 @@ Visualization Manager:
       Marker Topic: /tabletop_segmentation_markers
       Name: tabletop
       Namespaces:
-        tabletop_node: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -321,7 +317,7 @@ Visualization Manager:
       Marker Topic: /detector_markers
       Name: pose estimation
       Namespaces:
-        detection: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -329,7 +325,7 @@ Visualization Manager:
       Marker Topic: /object_details_markers_out
       Name: object details
       Namespaces:
-        object_parts: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -391,10 +387,10 @@ Visualization Manager:
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.259796
+      Pitch: -0.025204
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.853572
+      Yaw: 1.61857
     Saved: ~
 Window Geometry:
   Displays:
