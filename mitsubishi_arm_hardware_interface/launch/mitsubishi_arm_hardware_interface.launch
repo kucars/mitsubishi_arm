@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <arg name="model" default="$(find mitsubishi_arm_description)/robots/mitsubishi_rv_6sdl.urdf.xacro"/>
   <arg name="gui" default="False" />
