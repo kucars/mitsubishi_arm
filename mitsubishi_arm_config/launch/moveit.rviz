@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /TF1/Frames1
+        - /kinect1
       Splitter Ratio: 0.784387
     Tree Height: 891
   - Class: rviz/Help
@@ -42,9 +43,17 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
         camera_link:
           Value: true
         camera_optical_frame:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
           Value: true
         elbow:
           Value: true
@@ -53,6 +62,8 @@ Visualization Manager:
         end_effector:
           Value: true
         fore_arm:
+          Value: true
+        object_1:
           Value: true
         shoulder:
           Value: true
@@ -75,8 +86,16 @@ Visualization Manager:
         world:
           base_link:
             camera_link:
+              camera_depth_frame:
+                camera_depth_optical_frame:
+                  {}
               camera_optical_frame:
                 {}
+              camera_rgb_frame:
+                camera_rgb_optical_frame:
+                  {}
+            object_1:
+              {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -101,7 +120,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: RGB8
       Decay Time: 0
-      Enabled: false
+      Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -114,10 +133,10 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.01
       Style: Points
-      Topic: /camera/camera/depth/points
+      Topic: /camera/depth_registered/points
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       MoveIt_Goal_Tolerance: 1
@@ -309,7 +328,7 @@ Visualization Manager:
       Marker Topic: /tabletop_segmentation_markers
       Name: tabletop
       Namespaces:
-        {}
+        tabletop_node: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -317,7 +336,7 @@ Visualization Manager:
       Marker Topic: /detector_markers
       Name: pose estimation
       Namespaces:
-        {}
+        detection: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -325,7 +344,7 @@ Visualization Manager:
       Marker Topic: /object_details_markers_out
       Name: object details
       Namespaces:
-        {}
+        object_parts: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -380,17 +399,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.32032
+      Distance: 1.92679
       Focal Point:
         X: 0.651828
         Y: 0.0510497
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.484796
+      Pitch: 0.059796
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 1.38357
+      Yaw: 6.18676
     Saved: ~
 Window Geometry:
   Displays:
@@ -402,7 +421,7 @@ Window Geometry:
   Hide Right Dock: true
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000000100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000004fc00000028000003da000001920100001dfa000000010100000002fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000000ffffffff000002a200fffffffb000000100044006900730070006c0061007900730100000000000002a20000010f00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff00000161000000000000000000000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1855

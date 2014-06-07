@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-   <arg name="simulation" default="true" />
+   <arg name="simulation" default="false" />
 
    <group if="$(arg simulation)">
   	<!-- Load mitsubishi arm hardware interface and controller manager -->
@@ -19,7 +19,9 @@
    </group>
 
   <!-- Load mitsubishi arm controllers -->
-  <include file="$(find mitsubishi_arm_control)/launch/mitsubishi_arm_control.launch" />
+  <include file="$(find mitsubishi_arm_control)/launch/mitsubishi_arm_control.launch"> 
+    <arg name="simulation" value="$(arg simulation)" />
+  </include>
 
   <node name="static_environment" pkg="mitsubishi_arm_move" type="static_environment" />
 </launch>
