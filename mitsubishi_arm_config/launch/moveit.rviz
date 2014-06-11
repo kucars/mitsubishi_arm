@@ -4,8 +4,14 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
+        - /TF1
         - /TF1/Frames1
-        - /kinect1
+        - /TF1/Frames1/palm_frame1
+        - /TF1/Frames1/gripper_pose1/Orientation1
+        - /MotionPlanning1
+        - /MotionPlanning1/Scene Geometry1
+        - /MotionPlanning1/Scene Robot1
       Splitter Ratio: 0.784387
     Tree Height: 891
   - Class: rviz/Help
@@ -61,9 +67,17 @@ Visualization Manager:
           Value: true
         end_effector:
           Value: true
+        finger_1:
+          Value: true
         fore_arm:
           Value: true
+        gripper_pose:
+          Value: true
         object_1:
+          Value: true
+        object_2:
+          Value: true
+        palm_frame:
           Value: true
         shoulder:
           Value: true
@@ -96,6 +110,8 @@ Visualization Manager:
                   {}
             object_1:
               {}
+            object_2:
+              {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -105,7 +121,11 @@ Visualization Manager:
                         wrist:
                           torque_sensor:
                             end_effector:
-                              {}
+                              palm_frame:
+                                finger_1:
+                                  {}
+          gripper_pose:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -180,11 +200,20 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          finger_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
+          palm_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           shoulder:
             Alpha: 1
             Show Axes: false
@@ -285,11 +314,20 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          finger_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           fore_arm:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
+          palm_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           shoulder:
             Alpha: 1
             Show Axes: false
@@ -386,7 +424,7 @@ Visualization Manager:
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 255; 255; 255
     Fixed Frame: base_link
     Frame Rate: 30
   Name: root
@@ -399,17 +437,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.92679
+      Distance: 2.22422
       Focal Point:
         X: 0.651828
         Y: 0.0510497
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.059796
+      Pitch: -0.0297967
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.18676
+      Yaw: 6.27676
     Saved: ~
 Window Geometry:
   Displays:

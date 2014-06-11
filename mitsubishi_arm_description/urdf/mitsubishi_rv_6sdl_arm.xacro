@@ -10,7 +10,7 @@
 	<box size="0.455 .204 .239"/>
       </geometry>
       <origin xyz="-0.1125 0 .1185"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -46,7 +46,7 @@
 	<box size="0.200 .327 .111"/>
       </geometry>
       <origin xyz="-.100 0 0.0555"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -82,7 +82,7 @@
 	<cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -118,7 +118,7 @@
 	<box size="0.090 0.222 0.02"/>
       </geometry>
       <origin xyz="0 0.111 0.102"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -154,7 +154,7 @@
 	<cylinder length="0.327" radius="0.079"/>
       </geometry>
       <origin xyz="0 0 0"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -189,7 +189,7 @@
 	<box size="0.225 .126 .239"/>
       </geometry>
       <origin xyz="-0.0275 0 0"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -225,7 +225,7 @@
 	<box size="0.170 .120 .346"/>
       </geometry>
       <origin xyz="0 0 0.1815"/>
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -261,7 +261,7 @@
 	<box size="0.170 .09 .080"/>
       </geometry>
       <origin xyz="0 0 0"/> 
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -297,7 +297,7 @@
 	<cylinder  length="0.065" radius="0.065"/>
       </geometry>
       <origin xyz="0 0 0.0325"/> 
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </visual>
@@ -306,7 +306,7 @@
 	<cylinder  length="0.065" radius="0.065"/>
       </geometry>
       <origin xyz="0 0 0.0325"/> 
-      <material name="white">
+      <material name="orange">
         <color rgba="1 1 1 1"/>
       </material>
     </collision>

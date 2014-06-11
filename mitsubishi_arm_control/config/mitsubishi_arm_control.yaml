@@ -45,15 +45,15 @@ mitsubishi_arm:
     constraints:
       goal_time: 100.0                   # Override default
       j1:
-        trajectory: 0.1
+        trajectory: -1.0
       j2:
-        trajectory: 0.1
+        trajectory: -1.0
       j3:
-        trajectory: 0.1
+        trajectory: -1.0
       j4:
-        trajectory: 0.1
+        trajectory: -1.0
       j5:
-        trajectory: 0.1
+        trajectory: -1.0
       j6:
         trajectory: -1.0
 

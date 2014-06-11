@@ -37,6 +37,61 @@
 
   <!-- LINKS   -->  
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.xacro" />
+`
+  <joint name="end_effector_to_gripper_palm" type="fixed">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="end_effector"/>
+    <child link="palm_frame"/>
+    <origin xyz="0 0 0.065"  rpy="0 0 0"/> <!-- original is 0.085 but we have the torque sensor...-->
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- end_effector -->
+  <link name="palm_frame">
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="finger_1_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="palm_frame"/>
+    <child link="finger_1"/>
+    <origin xyz="0 0 0"  rpy="0 0 1.56"/> <!-- original is 0.085 but we have the torque sensor...-->
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <link name="finger_1">
+    <visual>
+     <geometry>
+	<box size="0.350 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<box size="0.350 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
 
   <!-- Kinect -->
   <!--<xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->

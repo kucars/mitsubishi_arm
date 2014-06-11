@@ -12,12 +12,12 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
 
     // Open File Descriptor
-    USB = open( "/dev/ttyUSB0",  O_RDWR | O_NOCTTY);
+    USB = open( "/dev/ttyUSB1",  O_RDWR | O_NOCTTY);
 
     // Error Handling
     if ( USB < 0 )
     {
-        std::cout << "Error " << errno << " opening " << "/dev/ttyUSB0" << ": " << strerror (errno) << std::endl;
+        std::cout << "Error " << errno << " opening " << "/dev/ttyUSB1" << ": " << strerror (errno) << std::endl;
     }
 
     // Configure Port
