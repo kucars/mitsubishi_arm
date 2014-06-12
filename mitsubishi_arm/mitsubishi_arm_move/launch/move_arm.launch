@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+
+   <arg name="simulation" default="false" />
+
+   <group if="$(arg simulation)">
+  	<!-- Load mitsubishi arm hardware interface and controller manager -->
+  	<include file="$(find mitsubishi_arm_gazebo)/launch/mitsubishi_arm_world.launch"/>
+
+  	<!-- Given the published joint states, publish tf for the robot links -->
+  	<include file="$(find mitsubishi_arm_config)/launch/moveit_gazebo.launch"/>
+   </group>
+   <group unless="$(arg simulation)">
+  	<!-- Load mitsubishi arm hardware interface and controller manager -->
+  	<include file="$(find mitsubishi_arm_hardware_interface)/launch/mitsubishi_arm_hardware_interface.launch"/>
+
+  	<!-- Given the published joint states, publish tf for the robot links -->
+  	<include file="$(find mitsubishi_arm_config)/launch/moveit.launch"/>
+   </group>
+
+  <!-- Load mitsubishi arm controllers -->
+  <include file="$(find mitsubishi_arm_control)/launch/mitsubishi_arm_control.launch"> 
+    <arg name="simulation" value="$(arg simulation)" />
+  </include>
+
+  <node name="static_environment" pkg="mitsubishi_arm_move" type="static_environment" />
+</launch>
+
