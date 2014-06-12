@@ -1,0 +1,14 @@
+<launch>
+	<arg name="model" default="$(find mitsubishi_arm_description)/robots/mitsubishi_rv_6sdl_barret.urdf.xacro"/>
+	<arg name="gui" default="False" />
+	<arg name="source_list" default="['mitsubishi_joints']" />
+	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+        <rosparam param="source_list">['mitsubishi_joint_states']</rosparam>
+	<!--<param name="source_list" value="$(arg source_list)"/>-->
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mitsubishi_arm_description)/rviz/urdf.rviz" required="true" />
+</launch>
+
