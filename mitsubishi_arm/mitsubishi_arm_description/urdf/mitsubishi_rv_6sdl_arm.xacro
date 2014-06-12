@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <property name="PI" value="3.1415926535897931" />
+  <property name="offset_from_limit" value="5.0" />
+
+  <!-- base_link -->
+  <link name="base_link" >
+    <visual>
+      <geometry>
+	<box size="0.455 .204 .239"/>
+      </geometry>
+      <origin xyz="-0.1125 0 .1185"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	<box size="0.455 .204 .239"/>
+      </geometry>
+      <origin xyz="-0.1125 0 .1185"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j1" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-170+offset_from_limit)*PI/180}" upper="${(170-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="base_link"/>
+    <child link="shoulder_block"/>
+    <origin xyz="0 0 0.239"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- shoulder_block -->
+  <link name="shoulder_block">
+    <visual>
+      <geometry>
+	<box size="0.200 .327 .111"/>
+      </geometry>
+      <origin xyz="-.100 0 0.0555"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	<box size="0.200 .327 .111"/>
+      </geometry>
+      <origin xyz="-.100 0 0.0555"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j2" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${-92*PI/180}" upper="${(135-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="shoulder_block"/>
+    <child link="shoulder"/>
+    <origin xyz="0.079 0 0.111" rpy="1.57079632679 0 3.14159265359"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- shoulder -->
+  <link name="shoulder">
+    <visual>
+      <geometry>
+	<cylinder length="0.327" radius="0.079"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.327" radius="0.079"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="fixed_joint_1" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="shoulder"/>
+    <child link="upper_arm"/>
+    <origin xyz="0 0.079 0"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- upper_arm -->
+  <link name="upper_arm">
+    <visual>
+      <geometry>
+	<box size="0.090 0.222 0.02"/>
+      </geometry>
+      <origin xyz="0 0.111 0.102"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	<box size="0.090 0.222 0.02"/>
+      </geometry>
+      <origin xyz="0 0.111 0.102"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j3" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-129+offset_from_limit)*PI/180}" upper="${(166-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="upper_arm"/>
+    <child link="elbow"/>
+    <origin xyz="0 0.301 0" rpy="0 0 1.57"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- elbow -->
+  <link name="elbow">
+    <visual>
+      <geometry>
+	<cylinder length="0.327" radius="0.079"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.327" radius="0.079"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="fixed_joint_2" type="fixed">
+    <parent link="elbow"/>
+    <child link="elbow_block"/>
+    <origin xyz="0 -0.100 0"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- elbow_block -->
+  <link name="elbow_block">
+    <visual>
+      <geometry>
+	<box size="0.225 .126 .239"/>
+      </geometry>
+      <origin xyz="-0.0275 0 0"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	<box size="0.225 .126 .239"/>
+      </geometry>
+      <origin xyz="-0.0275 0 0"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j4" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-160+offset_from_limit)*PI/180}" upper="${(160-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="elbow_block"/>
+    <child link="fore_arm"/>
+    <origin xyz="0.079 0 0"  rpy="0 1.5707963267 0"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- fore_arm -->
+  <link name="fore_arm">
+    <visual>
+      <geometry>
+	<box size="0.170 .120 .346"/>
+      </geometry>
+      <origin xyz="0 0 0.1815"/>
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	<box size="0.170 .120 .346"/>
+      </geometry>
+      <origin xyz="0 0 0.1815"/>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j5" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-110+offset_from_limit)*PI/180}" upper="${(110-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="fore_arm"/>
+    <child link="wrist"/>
+    <origin xyz="0 0 0.346"  rpy="0.0 -1.5707963267 0"/>
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- wrist -->
+  <link name="wrist">
+    <visual>
+     <geometry>
+	<box size="0.170 .09 .080"/>
+      </geometry>
+      <origin xyz="0 0 0"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<box size="0.170 .09 .080"/>
+      </geometry>
+      <origin xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="j6" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="wrist"/>
+    <child link="torque_sensor"/>
+    <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>
+   <dynamics damping="10.0" friction="100.0" />
+  </joint>
+
+  <!-- torque_sensor -->
+  <link name="torque_sensor">
+    <visual>
+     <geometry>
+	<cylinder  length="0.065" radius="0.065"/>
+      </geometry>
+      <origin xyz="0 0 0.0325"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<cylinder  length="0.065" radius="0.065"/>
+      </geometry>
+      <origin xyz="0 0 0.0325"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="torque_sensor_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <parent link="torque_sensor"/>
+    <child link="end_effector"/>
+    <origin xyz="0 0 0.065"  rpy="0 0 0"/> <!-- original is 0.085 but we have the torque sensor...-->
+   <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <!-- end_effector -->
+  <link name="end_effector">
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j1"/>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j2"/>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j3"/>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j4"/>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j5"/>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j6"/>
+    <actuator name="motor6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>
