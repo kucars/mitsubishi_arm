@@ -1,0 +1,5 @@
+<launch>
+  <!--<node pkg="tf" type="static_transform_publisher" name="camera_to_arm" args="0.796357 0.919602 0.431341 -1.55723 0.415733 0.0247013 base_link camera_link 10" />-->
+  <node pkg="tf" type="static_transform_publisher" name="camera_to_arm" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link map 10" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_footprint" args="0.0 0.0 0.0 0.0 0.0 0.0 base_link base_footprint 10" />
+</launch>
