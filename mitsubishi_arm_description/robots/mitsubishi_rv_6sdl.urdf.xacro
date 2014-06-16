@@ -93,6 +93,75 @@
     </inertial>
   </link>
 
+
+  <joint name="finger_2_joint" type="fixed">
+    <parent link="finger_1"/>
+    <child link="finger_2"/>
+    <origin xyz="0.17 0 0.12"  rpy="0 1.56 0"/> <!-- original is 0.085 but we have the torque sensor...-->
+    <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+  <link name="finger_2">
+    <visual>
+     <geometry>
+	<box size="0.2 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<box size="0.1 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="finger_3_joint" type="fixed">
+    <parent link="finger_1"/>
+    <child link="finger_3"/>
+    <origin xyz="-0.17 0 0.12"  rpy="0 1.56 0"/> <!-- original is 0.085 but we have the torque sensor...-->
+    <dynamics damping="100.0" friction="100.0" />
+  </joint>
+
+
+  <link name="finger_3">
+    <visual>
+     <geometry>
+	<box size="0.2 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+      <material name="orange">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+     <geometry>
+	<box size="0.1 .05 .02"/>
+      </geometry>
+      <origin xyz="0 0 -0.011"/> 
+    </collision>
+    <inertial>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia 
+        ixx="1.0" ixy="0.0" ixz="0.0" 
+        iyy="1.0" iyz="0.0" 
+        izz="1.0"/>
+    </inertial>
+  </link>
+
+
   <!-- Kinect -->
   <!--<xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->
 

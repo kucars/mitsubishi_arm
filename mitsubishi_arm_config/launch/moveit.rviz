@@ -5,10 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1
         - /TF1/Frames1
-        - /TF1/Frames1/palm_frame1
-        - /TF1/Frames1/gripper_pose1/Orientation1
+        - /kinect1
         - /MotionPlanning1
         - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Scene Robot1
@@ -71,11 +69,7 @@ Visualization Manager:
           Value: true
         fore_arm:
           Value: true
-        gripper_pose:
-          Value: true
         object_1:
-          Value: true
-        object_2:
           Value: true
         palm_frame:
           Value: true
@@ -110,8 +104,6 @@ Visualization Manager:
                   {}
             object_1:
               {}
-            object_2:
-              {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -124,8 +116,6 @@ Visualization Manager:
                               palm_frame:
                                 finger_1:
                                   {}
-          gripper_pose:
-            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -140,7 +130,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: RGB8
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -156,7 +146,7 @@ Visualization Manager:
       Topic: /camera/depth_registered/points
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       MoveIt_Goal_Tolerance: 1
@@ -382,7 +372,7 @@ Visualization Manager:
       Marker Topic: /object_details_markers_out
       Name: object details
       Namespaces:
-        object_parts: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -437,17 +427,17 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.22422
+      Distance: 3.49985
       Focal Point:
         X: 0.651828
         Y: 0.0510497
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: -0.0297967
+      Pitch: -0.0797965
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 6.27676
+      Yaw: 6.28176
     Saved: ~
 Window Geometry:
   Displays:
