@@ -91,7 +91,30 @@ int main(int argc, char **argv)
   collision_object.operation = collision_object.ADD;
 
 
+
+  // A pose for the box (specified relative to frame_id, representing the wall)
+  primitive.type = primitive.BOX;
+  primitive.dimensions.resize(3);
+  primitive.dimensions[0] = 0.30;
+  primitive.dimensions[1] = 0.35;
+  primitive.dimensions[2] = 0.25;
+
+
+  geometry_msgs::Pose box_pose;
+  box_pose.orientation.w = 1.0;
+  box_pose.position.x =  0.1;
+  box_pose.position.y =  -0.3;
+  box_pose.position.z =  0.1;
+
+  collision_object.primitives.push_back(primitive);
+  collision_object.primitive_poses.push_back(box_pose);
+  collision_object.operation = collision_object.ADD;
+
+
   std::vector<moveit_msgs::CollisionObject> collision_objects;
+
+
+
   collision_objects.push_back(collision_object);
 
   // Now, let's add the collision object into the world
