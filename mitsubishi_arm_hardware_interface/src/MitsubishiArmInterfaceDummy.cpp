@@ -1,6 +1,6 @@
 #include <mitsubishi_arm_hardware_interface/MitsubishiArmInterface.h>
 #include <sstream>
-MitsubishiArmInterface::MitsubishiArmInterface()
+MitsubishiArmInterface::MitsubishiArmInterface(std::string & port)
 {
     //joint_state_pub=n_priv.advertise<sensor_msgs::JointState>( "joint_states", 1);
 

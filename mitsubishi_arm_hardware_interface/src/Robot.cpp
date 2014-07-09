@@ -9,7 +9,11 @@ int main(int argc, char** argv)
     hardware_interface::JointStateInterface  jnt_state_interface_;
     hardware_interface::PositionJointInterface jnt_pos_interface_;
 
-    MitsubishiArmInterface robot;
+    std::string port;
+
+    node.param<std::string>("mitsubishi_port", port, "/dev/ttyUSB1");
+
+    MitsubishiArmInterface robot(port);
     robot.init(jnt_state_interface_, jnt_pos_interface_);
     controller_manager::ControllerManager cm(&robot, node);
 

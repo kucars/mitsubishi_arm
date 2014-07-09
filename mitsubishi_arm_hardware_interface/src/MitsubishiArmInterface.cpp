@@ -1,6 +1,6 @@
 #include <mitsubishi_arm_hardware_interface/MitsubishiArmInterface.h>
 #include <sstream>
-MitsubishiArmInterface::MitsubishiArmInterface()
+MitsubishiArmInterface::MitsubishiArmInterface(std::string & port)
 {
     //joint_state_pub=n_priv.advertise<sensor_msgs::JointState>( "joint_states", 1);
 
@@ -12,12 +12,12 @@ MitsubishiArmInterface::MitsubishiArmInterface()
 
 
     // Open File Descriptor
-    USB = open( "/dev/ttyUSB1",  O_RDWR | O_NOCTTY);
-
+    //USB = open( "/dev/ttyUSB1",  O_RDWR | O_NOCTTY);
+    USB = open( port.c_str(),  O_RDWR | O_NOCTTY);
     // Error Handling
     if ( USB < 0 )
     {
-        std::cout << "Error " << errno << " opening " << "/dev/ttyUSB1" << ": " << strerror (errno) << std::endl;
+        std::cout << "Error " << errno << " opening " << port.c_str() << ": " << strerror (errno) << std::endl;
     }
 
     // Configure Port

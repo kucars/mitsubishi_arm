@@ -27,7 +27,7 @@ bool isEqual(double & a, double & b, double threshold)
 class MitsubishiArmInterface : public hardware_interface::RobotHW
 {
 public:
-    MitsubishiArmInterface();
+    MitsubishiArmInterface(std::string & port);
     ~MitsubishiArmInterface();
 
     bool init();
@@ -43,7 +43,7 @@ public:
 
 private:
     static const unsigned int joint_number=6;
-
+	
     hardware_interface::JointStateInterface jnt_state_interface;
     hardware_interface::PositionJointInterface jnt_pos_interface;
     std::vector<double> cmd;
