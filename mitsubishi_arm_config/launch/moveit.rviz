@@ -10,7 +10,7 @@ Panels:
         - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Scene Robot1
       Splitter Ratio: 0.784387
-    Tree Height: 891
+    Tree Height: 437
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -44,6 +44,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        ar_marker_4:
+          Value: true
         base_link:
           Value: true
         camera_depth_frame:
@@ -71,10 +73,6 @@ Visualization Manager:
         finger_3:
           Value: true
         fore_arm:
-          Value: true
-        gripper_pose:
-          Value: true
-        object_1:
           Value: true
         palm_frame:
           Value: true
@@ -106,9 +104,8 @@ Visualization Manager:
                 {}
               camera_rgb_frame:
                 camera_rgb_optical_frame:
-                  {}
-            object_1:
-              {}
+                  ar_marker_4:
+                    {}
             shoulder_block:
               shoulder:
                 upper_arm:
@@ -124,8 +121,6 @@ Visualization Manager:
                                     {}
                                   finger_3:
                                     {}
-          gripper_pose:
-            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -386,7 +381,7 @@ Visualization Manager:
       Marker Topic: /tabletop_segmentation_markers
       Name: tabletop
       Namespaces:
-        tabletop_node: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -394,7 +389,7 @@ Visualization Manager:
       Marker Topic: /detector_markers
       Name: pose estimation
       Namespaces:
-        detection: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -402,7 +397,7 @@ Visualization Manager:
       Marker Topic: /object_details_markers_out
       Name: object details
       Namespaces:
-        object_parts: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -464,10 +459,10 @@ Visualization Manager:
         Z: -8.0723e-07
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.030203
+      Pitch: 0.320203
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.858576
+      Yaw: 0.573576
     Saved: ~
 Window Geometry:
   Displays:

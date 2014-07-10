@@ -28,7 +28,7 @@
 #include <moveit_msgs/AttachedCollisionObject.h>
 #include <moveit_msgs/CollisionObject.h>
 
-
+tf::Transform transform;
 
 using pcl::visualization::PointCloudColorHandlerGenericField;
 using pcl::visualization::PointCloudColorHandlerCustom;
@@ -67,7 +67,7 @@ bool computeMatrix(PointCloud::Ptr target,
 
         ROS_INFO("Registration completed and Registration Matrix is being broadcasted");
 
-        tf::Transform transform(tf::Matrix3x3(trMatrix(0, 0), trMatrix(0, 1), trMatrix(0, 2),
+         transform=tf::Transform(tf::Matrix3x3(trMatrix(0, 0), trMatrix(0, 1), trMatrix(0, 2),
                                               trMatrix(1, 0), trMatrix(1, 1), trMatrix(1, 2),
                                               trMatrix(2, 0), trMatrix(2, 1), trMatrix(2, 2)),
                                 tf::Vector3(trMatrix(0, 3), trMatrix(1, 3), trMatrix(2, 3)));
@@ -75,16 +75,13 @@ bool computeMatrix(PointCloud::Ptr target,
         Eigen::Vector3d origin(transform.getOrigin());
         double roll, pitch, yaw;
         tf::Matrix3x3(transform.getRotation()).getRPY(roll, pitch, yaw);
+	std::cout << std::endl << "#################################################" << std::endl; 
+	std::cout << std::endl << "########### TRANSFORMATION PARAMETERS ###########" << std::endl; 
+	std::cout << std::endl << "#################################################" << std::endl; 
+        std::cout << "origin: "<<origin.transpose() << std::endl;
+        std::cout << "rpy: " << roll << " " << pitch << " " << yaw << std::endl;
 
-        std::cout << "origin:"<<origin << std::endl;
-        std::cout << "roll:" << roll << " " << pitch << " " << yaw << std::endl;
 
-        if (broadcast)
-        {
-            static tf::TransformBroadcaster br;
-            br.sendTransform(tf::StampedTransform(transform, ros::Time::now(),
-                                                  world_name, target_name));
-        }
     }
 
     return true;
@@ -101,7 +98,8 @@ int main(int argc, char *argv[])
     ros::NodeHandle n_priv("~");
     double min_x,min_y,min_z;
     double max_x,max_y,max_z;
-    double range, range_angle;
+    double roll_angle_range, pitch_angle_range, yaw_angle_range;
+    double roll_angle_offset, pitch_angle_offset, yaw_angle_offset;
     int number_of_points;
 
     std::string marker_link;
@@ -111,8 +109,12 @@ int main(int argc, char *argv[])
 
     n_priv.param<int>("number_of_points",number_of_points, 6);
 
-    n_priv.param<double>("range",range, 0.2);
-    n_priv.param<double>("range_angle",range_angle, 0.1);
+    n_priv.param<double>("roll_angle_range",    roll_angle_range,  0.2);
+    n_priv.param<double>("roll_angle_offset",   roll_angle_offset,  0.2);
+    n_priv.param<double>("pitch_angle_range",   pitch_angle_range, 0.2);
+    n_priv.param<double>("pitch_angle_offset",  pitch_angle_offset,  0.2);
+    n_priv.param<double>("yaw_angle_range",     yaw_angle_range,   0.2);
+    n_priv.param<double>("yaw_angle_offset",    yaw_angle_offset,  0.2);
 
     n_priv.param<double>("min_x",min_x, 0.2);
     n_priv.param<double>("max_x",max_x, 1.0);
@@ -150,13 +152,15 @@ int main(int argc, char *argv[])
     // We can print the name of the reference frame for this robot.
 
     group.setPoseReferenceFrame(base_link);
-    std::cout << group.getPlanningFrame() << std::endl;
+    //std::cout << group.getPlanningFrame() << std::endl;
     group.setEndEffectorLink(end_effector_link);
 
 
     std::vector<double> group_variable_values;
     group.getCurrentState()->copyJointGroupPositions(group.getCurrentState()->getRobotModel()->getJointModelGroup(group.getName()), group_variable_values);
     group.setWorkspace(min_x,min_y,min_z,max_x,max_y,max_z);
+    
+
     group.setGoalTolerance(0.03);
 
     moveit::planning_interface::MoveGroup::Plan my_plan;
@@ -174,17 +178,21 @@ int main(int argc, char *argv[])
           arm_cloud->points.size()!=number_of_points)
     {
         ROS_INFO_STREAM("Samples acquired so far: "<<camera_cloud->points.size()<< " out of "<<number_of_points);
+
+	// Keep trying to generate possible end effector pose
         bool success;
         do
         {
-            tf::Quaternion quat_tf=tf::createQuaternionFromRPY(-1.56,RandomFloat(-range_angle,range_angle),RandomFloat(-range_angle,range_angle));
+            tf::Quaternion quat_tf=tf::createQuaternionFromRPY(roll_angle_offset +RandomFloat(-roll_angle_range,roll_angle_range),
+							       pitch_angle_offset+RandomFloat(-pitch_angle_range,pitch_angle_range),
+                                                               yaw_angle_offset  +RandomFloat(-yaw_angle_range,yaw_angle_range) );
             geometry_msgs::Quaternion quat_msg;
             tf::quaternionTFToMsg(quat_tf,quat_msg);
             //random_pose=group.getRandomPose();
             random_pose.pose.orientation=quat_msg;
-            random_pose.pose.position.x=0.7+RandomFloat(-range,range);
-            random_pose.pose.position.y=0.3+RandomFloat(-range,range);
-            random_pose.pose.position.z=0.3+RandomFloat(-range,range);
+            random_pose.pose.position.x=RandomFloat(min_x,max_x);
+            random_pose.pose.position.y=RandomFloat(min_y,max_y);
+            random_pose.pose.position.z=RandomFloat(min_z,max_z);
 
             group.setPoseTarget(random_pose);
             success = group.plan(my_plan);
@@ -196,7 +204,7 @@ int main(int argc, char *argv[])
         if(!group.execute(my_plan))
             ROS_WARN_STREAM("Trajectory did not succeed.");
 
-        sleep(5.0);
+        //sleep(5.0);
 
 
         tf::TransformListener listener;
@@ -253,14 +261,22 @@ int main(int argc, char *argv[])
     // Add visualization data
     //showCloudsLeft(source,  target);
 
-
-    while(ros::ok)
-    {
-        computeMatrix(target,
+    computeMatrix(target,
                       source,
                       camera_link,
                       base_link,
                       true);
+    ros::Rate r(100.0);
+    while(ros::ok)
+    {
+
+
+            static tf::TransformBroadcaster br;
+            br.sendTransform(tf::StampedTransform(transform, ros::Time::now(),
+                                                  base_link, camera_link));
+
+
+	r.sleep();
     }
 
     return 1;
