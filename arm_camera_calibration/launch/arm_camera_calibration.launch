@@ -2,6 +2,7 @@
 <launch>
   <include file="$(find openni_launch)/launch/openni.launch"/>
   <include file="$(find mitsubishi_arm_move)/launch/move_arm.launch"/>
+  <include file="$(find arm_camera_calibration)/launch/ar_track_alvar.launch"/>
   <node name="arm_camera_calibration" pkg="arm_camera_calibration" type="arm_camera_calibration" output="screen">
      
     <!-- CONFIG PARAMETERS -->

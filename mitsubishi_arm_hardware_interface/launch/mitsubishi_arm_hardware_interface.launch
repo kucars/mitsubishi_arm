@@ -6,6 +6,6 @@
   <param name="/mitsubishi_arm/robot_description" command="$(find xacro)/xacro.py $(arg model)" />
   <param name="/mitsubishi_arm/mitsubishi_port" value="/dev/ttyUSB1" />
 
-  <node ns="/mitsubishi_arm" name="mitsubishi_arm_hardware_interface" pkg="mitsubishi_arm_hardware_interface" type="mitsubishi_arm_hardware_interface_node" respawn="false" output="screen"/>
+  <node ns="/mitsubishi_arm" name="mitsubishi_arm_hardware_interface" pkg="mitsubishi_arm_hardware_interface" type="mitsubishi_arm_hardware_interface_node" respawn="false" /><!--output="screen"/>-->
 
 </launch>

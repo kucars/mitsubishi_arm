@@ -12,7 +12,7 @@
     <param name="end_effector_link" value="end_effector" />  <!-- end effector frame, where the AR marker should be placed -->
     <param name="marker_link" value="ar_marker_3" /> <!-- marker id --> 
 
-    <!-- workspace (arm base_link frame) from which the samples are taken (in meters -->
+    <!-- workspace (arm base_link frame) from which the samples are taken (in meters) -->
     <param name="min_x" value="0.2" /> 
     <param name="max_x" value="1.0" /> 
     <param name="min_y" value="0.2" /> 
