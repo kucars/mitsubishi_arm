@@ -23,7 +23,7 @@
       </inertial>
 
       <visual>
-        <origin xyz="0.0 0.012 0" rpy="0 0 0"/>
+	<origin xyz="0.0 0.012 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" scale="0.001 0.001 0.001" />
         </geometry>
@@ -39,7 +39,7 @@
     </link>
 
     <joint name="${name}_optical_joint" type="fixed">
-      <origin xyz="${cal_kinect_x}            ${cal_kinect_y}         ${cal_kinect_z}"
+      <origin xyz="${cal_kinect_x}           ${cal_kinect_y}         ${cal_kinect_z}"
                 rpy="${-M_PI/2+cal_kinect_roll} ${0.0+cal_kinect_pitch} ${-M_PI/2+cal_kinect_yaw}" />
       <parent link="${name}_link"/>
       <child link="${name}_optical_frame"/>

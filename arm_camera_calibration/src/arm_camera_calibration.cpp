@@ -119,8 +119,8 @@ int main(int argc, char *argv[])
     n_priv.param<double>("min_x",min_x, 0.2);
     n_priv.param<double>("max_x",max_x, 1.0);
 
-    n_priv.param<double>("min_y",min_y, 0.2);
-    n_priv.param<double>("max_y",max_y, 1.0);
+    n_priv.param<double>("min_y",min_y, -0.2);
+    n_priv.param<double>("max_y",max_y, -1.0);
 
     n_priv.param<double>("min_z",min_z, 0.2);
     n_priv.param<double>("max_z",max_z, 1.0);
@@ -154,8 +154,8 @@ int main(int argc, char *argv[])
     group.setPoseReferenceFrame(base_link);
     //std::cout << group.getPlanningFrame() << std::endl;
     group.setEndEffectorLink(end_effector_link);
-
-
+  //  min_y=-1*min_y;
+   // max_y=-1*max_y;
     std::vector<double> group_variable_values;
     group.getCurrentState()->copyJointGroupPositions(group.getCurrentState()->getRobotModel()->getJointModelGroup(group.getName()), group_variable_values);
     group.setWorkspace(min_x,min_y,min_z,max_x,max_y,max_z);
@@ -190,13 +190,20 @@ int main(int argc, char *argv[])
             tf::quaternionTFToMsg(quat_tf,quat_msg);
             //random_pose=group.getRandomPose();
             random_pose.pose.orientation=quat_msg;
+	    
             random_pose.pose.position.x=RandomFloat(min_x,max_x);
             random_pose.pose.position.y=RandomFloat(min_y,max_y);
             random_pose.pose.position.z=RandomFloat(min_z,max_z);
 
+	//    random_pose.pose.position.x=0.55555555;
+	 //   random_pose.pose.position.y=-0.433334;
+	//   random_pose.pose.position.z=0.3333334;
+	    
+	     
             group.setPoseTarget(random_pose);
             success = group.plan(my_plan);
-            //std::cout << random_pose.pose.position << std::endl;
+            std::cout << random_pose.pose.position << std::endl;
+	    std::cout << min_x <<" "<<max_x<<" "<<min_y<<" "<<max_y<<" "<<min_z<<" "<<max_z<<" "<< std::endl;
         }
         while(!success && ros::ok());
 

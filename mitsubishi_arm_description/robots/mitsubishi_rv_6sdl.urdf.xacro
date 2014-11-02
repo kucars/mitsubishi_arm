@@ -37,18 +37,24 @@
 
   <!-- LINKS   -->  
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.xacro" />
+  <xacro:include filename="$(find bhand_description)/urdf/bh282.urdf.xacro" />
+  <xacro:bhand_macro name="bh" parent="end_effector">
+	<origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:bhand_macro>
 `
+  <!-- *********************commented to add the barrett hand**********************-->
+  <!--
   <joint name="end_effector_to_gripper_palm" type="fixed">
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.2"/>
     <parent link="end_effector"/>
     <child link="palm_frame"/>
-    <origin xyz="0 0 0.065"  rpy="0 0 0"/> <!-- original is 0.085 but we have the torque sensor...-->
-   <dynamics damping="100.0" friction="100.0" />
+    <origin xyz="0 0 0.065"  rpy="0 0 0"/> --><!-- original is 0.085 but we have the torque sensor...-->
+<!--   <dynamics damping="100.0" friction="100.0" />
   </joint>
-
+  -->
   <!-- end_effector -->
-  <link name="palm_frame">
+ <!-- <link name="palm_frame">
     <inertial>
       <origin xyz="0 0 1" rpy="0 0 0"/>
       <mass value="0.01"/>
@@ -63,8 +69,8 @@
     <axis xyz="0 0 1"/>
     <parent link="palm_frame"/>
     <child link="finger_1"/>
-    <origin xyz="0 0 0"  rpy="0 0 1.56"/> <!-- original is 0.085 but we have the torque sensor...-->
-   <dynamics damping="100.0" friction="100.0" />
+    <origin xyz="0 0 0"  rpy="0 0 1.56"/> --><!-- original is 0.085 but we have the torque sensor...-->
+<!--   <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <link name="finger_1">
@@ -97,8 +103,8 @@
   <joint name="finger_2_joint" type="fixed">
     <parent link="finger_1"/>
     <child link="finger_2"/>
-    <origin xyz="0.17 0 0.12"  rpy="0 1.56 0"/> <!-- original is 0.085 but we have the torque sensor...-->
-    <dynamics damping="100.0" friction="100.0" />
+    <origin xyz="0.17 0 0.12"  rpy="0 1.56 0"/> --><!-- original is 0.085 but we have the torque sensor...-->
+<!--    <dynamics damping="100.0" friction="100.0" />
   </joint>
 
   <link name="finger_2">
@@ -130,8 +136,8 @@
   <joint name="finger_3_joint" type="fixed">
     <parent link="finger_1"/>
     <child link="finger_3"/>
-    <origin xyz="-0.17 0 0.12"  rpy="0 1.56 0"/> <!-- original is 0.085 but we have the torque sensor...-->
-    <dynamics damping="100.0" friction="100.0" />
+    <origin xyz="-0.17 0 0.12"  rpy="0 1.56 0"/> --><!-- original is 0.085 but we have the torque sensor...-->
+  <!--  <dynamics damping="100.0" friction="100.0" />
   </joint>
 
 
@@ -161,6 +167,19 @@
     </inertial>
   </link>
 
+ -->
+   <!-- *******************************************-->
+  <!-- Kinect -->
+  <!--<xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->
+
+  <!-- kinect to base link -->
+ <!-- <joint name="camera_in_world_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.796357 0.919602 0.431341" rpy="0.0247013 0.415733 -1.55723"/>
+  </joint>  -->
+  
+  
 
   <!-- Kinect -->
   <!--<xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->
@@ -185,7 +204,7 @@
 
   <!-- Transformation from the arm base to the kinect base link -->
   <xacro:kinect_camera_v0 name="camera" parent="base_link" >
-     <origin xyz="0.810223 0.920646 0.424889" rpy="0.0137265 0.405234 -1.5458"/>
+     <origin xyz="0.537566 -0.979771 0.436556" rpy="0.00848366 0.240007 1.585"/>
   </xacro:kinect_camera_v0 >
 
 </robot>

@@ -14,7 +14,7 @@ import time
 
 # Open serial port connection
 baudrate=19200
-COM =serial.Serial('/dev/ttyUSB1',baudrate)
+COM =serial.Serial('/dev/ttyUSB0',baudrate)
 COM.parity = 'E'
 COM.stopbits = 2
 COM.timeout= 0.0
