@@ -345,7 +345,9 @@
 
   <transmission name="tran1">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j1"/>
+    <joint name="j1">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
     <actuator name="motor1">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
@@ -354,7 +356,9 @@
 
   <transmission name="tran2">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j2"/>
+    <joint name="j2">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
     <actuator name="motor2">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
@@ -363,7 +367,9 @@
 
   <transmission name="tran3">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j3"/>
+    <joint name="j3">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
     <actuator name="motor3">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
@@ -372,7 +378,9 @@
 
   <transmission name="tran4">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j4"/>
+    <joint name="j4">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>    
     <actuator name="motor4">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
@@ -381,7 +389,9 @@
 
   <transmission name="tran5">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j5"/>
+    <joint name="j5">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
     <actuator name="motor5">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
@@ -390,7 +400,9 @@
 
   <transmission name="tran6">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="j6"/>
+    <joint name="j6">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>    
     <actuator name="motor6">
       <hardwareInterface>EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
