@@ -283,7 +283,7 @@
 
   <joint name="j6" type="revolute">
     <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="${(-360+offset_from_limit)*PI/180}" upper="${(360-offset_from_limit)*PI/180}" velocity="0.2"/>
+    <limit effort="1000.0" lower="${(-180+offset_from_limit)*PI/180}" upper="${(180-offset_from_limit)*PI/180}" velocity="0.2"/><!-- instead of -180 is -360 , 180 is 360 -->
     <parent link="wrist"/>
     <child link="torque_sensor"/>
     <origin xyz="0.085 0 0"  rpy="0 1.5707963267 0"/>

@@ -37,12 +37,21 @@
 
   <!-- LINKS   -->  
   <xacro:include filename="$(find mitsubishi_arm_description)/urdf/mitsubishi_rv_6sdl_arm.xacro" />
-  <xacro:include filename="$(find bhand_description)/urdf/bh282.urdf.xacro" />
-  <xacro:bhand_macro name="bh" parent="end_effector">
+  <!-- **********************barret hand part (old)****************************** -->
+  <!-- xacro:include filename="$(find bhand_description)/urdf/bh280.urdf.xacro" / -->
+  <!-- xacro:bhand_macro name="bh" parent="end_effector">
 	<origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:bhand_macro>
-`
-  <!-- *********************commented to add the barrett hand**********************-->
+  </xacro:bhand_macro -->
+` <!-- *************************************************************************** -->
+  
+  <!-- **********************barret hand part (new)****************************** -->
+<!--  <xacro:include filename="$(find barrett_hand_description)/urdf/barrett_hand.xacro" />
+  <joint name="barrett_hand_base_link" type="fixed">
+  <parent link="end_effector"/>
+  <child link="barrett_base_link"/>
+  </joint>-->
+` <!-- ************************************************************************** -->
+
   <!--
   <joint name="end_effector_to_gripper_palm" type="fixed">
     <axis xyz="0 0 1"/>
@@ -169,16 +178,17 @@
 
  -->
    <!-- *******************************************-->
-  <!-- Kinect -->
-  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />
+ 
+   <!-- Kinect -->
+<!--  <xacro:include filename="$(find mitsubishi_arm_description)/urdf/sensors.xacro" />-->
 
   <!-- kinect to base link -->
- <joint name="camera_in_world_joint" type="fixed">
+ <!--<joint name="camera_in_world_joint" type="fixed">
     <parent link="base_link"/>
     <child link="camera_link"/>
     <origin xyz="0.796357 0.919602 0.431341" rpy="0.0247013 0.415733 -1.55723"/>
   </joint>
-  
+  -->
   
 
   <!-- Kinect -->
@@ -204,7 +214,8 @@
 
   <!-- Transformation from the arm base to the kinect base link -->
   <xacro:kinect_camera_v0 name="camera" parent="base_link" >
-     <origin xyz="0.537566 -0.979771 0.436556" rpy="0.00848366 0.240007 1.585"/>
+    <!-- origin xyz="0.537566 -0.979771 0.436556" rpy="0.00848366 0.240007 1.585"/ --> <!-- camera is to the mitsubishi left -->
+    <origin xyz="0.691031 0.995553 0.428516" rpy="0.00123993 0.231118 -1.56538"/> <!-- camera is to the mitsubishi right (previous location) -->
   </xacro:kinect_camera_v0 >
 
 </robot>
